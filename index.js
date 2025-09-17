@@ -14,6 +14,8 @@ app.get("/", (req, res) => {
 
 app.use("/api/clientes", require("./routes/clientes"));
 
+app.use("/api/servicios", require("./routes/servicios"));
+
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
