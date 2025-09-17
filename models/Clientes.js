@@ -14,12 +14,7 @@ const ClienteSchema = new  mongoose.Schema({
     direccion: {
         type: String,
         required: true
-    },
-    mascota: {
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref:"Mascotas"
-    } }, {
+    }}, {
     versionKey: false 
 });
 
