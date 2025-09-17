@@ -16,7 +16,10 @@ app.use("/api/clientes", require("./routes/clientes"));
 
 app.use("/api/servicios", require("./routes/servicios"));
 
-app.use("api/mascotas", require("./routes/mascotas")); 
+app.use("/api/mascotas", require("./routes/mascotas")); 
+
+app.use("/api/usuarios", require("./routes/usuarios")); 
+
 
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en http://localhost:${PORT}`);
