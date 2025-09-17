@@ -12,6 +12,8 @@ app.get("/", (req, res) => {
     res.send("Api funcionando");
 });
 
+app.use("/api/clientes", require("./routes/clientes"));
+
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
