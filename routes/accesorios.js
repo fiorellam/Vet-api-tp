@@ -19,6 +19,19 @@ router.get("/", async(req, res) => {
     res.json(accesorios)
 })
 
+router.get("/:id", async(req, res) => {
+    try{
+        const id = req.params.id;
+        const accesorio = await Accesorio.findById(id);
+        if(!accesorio){
+            return res.status(404).json({mensaje: 'Accesorio con ese id no fue encontrado'});
+        }
+        res.json({mensaje: "Accesorio encontrado", accesorio});
+    } catch(error){
+        res.status(400).json({mensaje: "Error al encontrar el accesorio", error});
+    }
+})
+
 router.put("/:id", async(req, res) => {
     try{
         const id = req.params.id;
