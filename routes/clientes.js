@@ -15,10 +15,14 @@ router.post("/", async (req, res) => {
     }
 });
 
-router.get("/", async (req, res) =>{
-    const clientes = await Cliente.find();
-    res.json(clientes);
-});
+router.get('/', async (req, res) => {
+    try {
+        const clientes = await Cliente.find()
+        res.status(200).json(clientes)
+    } catch (error) {
+        res.status(500).json({ mensaje: 'Error al obtener clientes', error })
+    }
+})
 
 router.put('/:id', async (req, res) => {
     try {
