@@ -11,7 +11,7 @@ router.post("/", async(req, res)=>{
 })
 
 router.get("/", async(req, res)=>{
-    const mascotas = await Mascota.find().populate("Clientes"); 
+    const mascotas = await Mascota.find().populate("duenioMascota"); 
 
     res.json(mascotas); 
 })
