@@ -25,6 +25,8 @@ app.use('/api/usuarios', verificarToken, require('./routes/usuarios'));
 //app.use('/api/usuarios/perfil', verificarToken, require('./routes/usuarios'))
 
 
+app.use("/api/accesorios", require("./routes/accesorios"));
+
 
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en http://localhost:${PORT}`);
