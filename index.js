@@ -2,6 +2,7 @@ const express = require("express");
 const connectDatabase = require("./database");
 const verificarToken = require('./middlewares/verificarToken')
 const path = require('path');
+const rateLimit = require('express-rate-limit');
 require("dotenv").config();
 
 
@@ -16,7 +17,13 @@ app.get("/", (req, res) => {
     res.send("Api funcionando");
 });
 
-app.use("/api/login", require("./routes/login"));
+const loginLimiter = rateLimit({
+  windowMs: 10 * 60 * 1000, 
+  max: 5, 
+  message: { mensaje: 'Demasiados intentos de inicio de sesión. Espera unos minutos.' }
+})
+
+app.use("/api/login", loginLimiter, require("./routes/login"));
 
 app.use('/api/clientes', verificarToken, require('./routes/clientes'))
 app.use('/api/servicios', verificarToken, require('./routes/servicios'))
