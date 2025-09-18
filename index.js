@@ -22,10 +22,11 @@ app.use('/api/clientes', verificarToken, require('./routes/clientes'))
 app.use('/api/servicios', verificarToken, require('./routes/servicios'))
 app.use('/api/mascotas', verificarToken, require('./routes/mascotas'))
 app.use('/api/usuarios', verificarToken, require('./routes/usuarios')); 
-//app.use('/api/usuarios/perfil', verificarToken, require('./routes/usuarios'))
+app.use("/api/accesorios",verificarToken, require("./routes/accesorios"));
 
 
-app.use("/api/accesorios", require("./routes/accesorios"));
+
+
 
 
 app.listen(PORT, () => {
