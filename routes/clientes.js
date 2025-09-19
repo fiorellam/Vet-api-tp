@@ -24,6 +24,20 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get("/:id", async (req, res)=>{
+    try{
+        const cliente = await Cliente.findById(req.params.id); 
+        if(!cliente){
+            return res.status(404).json({mensaje: "Cliente no encontrado"}); 
+        }
+        res.json(cliente); 
+    }catch(error){
+        res.status(400).json({mensaje: "Error al obtener el cliente", error})
+    }
+
+});
+
+
 router.put('/:id', async (req, res) => {
     try {
         const cliente = await Cliente.findByIdAndUpdate(

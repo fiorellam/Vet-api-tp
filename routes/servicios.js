@@ -20,6 +20,19 @@ router.get("/", async (req, res) =>{
     res.json(servicios);
 });
 
+router.get("/:id", async (req, res)=>{
+    try{
+        const servicio = await Servicio.findById(req.params.id); 
+        if(!servicio){
+            return res.status(404).json({mensaje: "Servicio no encontrado"}); 
+        }
+        res.json(servicio); 
+    }catch(error){
+        res.status(400).json({mensaje: "Error al obtener el servicio", error})
+    }
+
+});
+
 router.put('/:id', async (req, res) => {
     try {
         const servicio = await Servicio.findByIdAndUpdate(

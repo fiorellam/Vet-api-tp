@@ -66,6 +66,19 @@ router.get("/", async (req, res) =>{
     res.json(usuarios);
 });
 
+router.get("/:id", async (req, res)=>{
+    try{
+        const usuario = await Usuario.findById(req.params.id); 
+        if(!usuario){
+            return res.status(404).json({mensaje: "Usuario no encontrado"}); 
+        }
+        res.json(usuario); 
+    }catch(error){
+        res.status(400).json({mensaje: "Error al obtener el usuario", error})
+    }
+
+});
+
 router.put('/:id', async (req, res) => {
     try {
         const usuario = await Usuario.findByIdAndUpdate(
