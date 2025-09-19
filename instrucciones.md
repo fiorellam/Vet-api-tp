@@ -18,9 +18,9 @@
     -[✅]DELETE para eliminar un registro.
 • Asegúrate de que los endpoints estén bien organizados y sigan las mejores prácticas de REST.
 ## 5. Implementa Seguridad
-- [❌] Protege las contraseñas: Usa bcrypt para hashear y almacenar las contraseñas de forma segura.
-- [❌] Valida los datos: Asegúrate de que los datos enviados a la API estén validados (por ejemplo: campos obligatorios, formato de email, etc.).
-- [❌] Protege los endpoints: Implementa rate limiting para prevenir ataques de fuerza bruta.
+- [✅] Protege las contraseñas: Usa bcrypt para hashear y almacenar las contraseñas de forma segura.
+- [✅] Valida los datos: Asegúrate de que los datos enviados a la API estén validados (por ejemplo: campos obligatorios, formato de email, etc.).
+- [✅] Protege los endpoints: Implementa rate limiting para prevenir ataques de fuerza bruta.
 ## 6. Prueba tu API
 - [❌] Usa Postman para probar todos los endpoints de tu API.
 - [❌] Asegúrate de que todas las operaciones CRUD funcionen correctamente.
