@@ -12,7 +12,7 @@
 -[✅]• Define las rutas para cada entidad (usuarios, productos, reservas, etc.).
 • Implementa los siguientes endpoints para cada entidad:
     -[✅] GET para obtener todos los registros.
-    -[❌] GET para obtener un registro por ID.
+    -[✅] GET para obtener un registro por ID.
     -[✅] POST para crear un nuevo registro.
     -[✅]PUT para actualizar un registro existente.
     -[✅]DELETE para eliminar un registro.
