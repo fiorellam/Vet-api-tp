@@ -54,7 +54,7 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        const resultado = await Cliente.findByIdAndDelete(req.params.id);
+        const resultado = await Servicio.findByIdAndDelete(req.params.id);
         res.json({
         mensaje: 'Servicio eliminado correctamente',
         servicio: resultado
