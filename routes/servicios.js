@@ -15,14 +15,18 @@ router.post("/", async (req, res) => {
     }
 });
 
-router.get("/", async (req, res) =>{
-    const servicios = await Servicio.find();
-    res.json(servicios);
-});
+router.get("/", async(req, res)=>{
+    try{
+        const servicios = await Servicio.find().populate("mascota").populate("duenio");
+        res.json(servicios); 
+    }catch(error){
+        res.status(500).json({mensaje: "Error al obtener el servicio", error})
+    }
+}); 
 
 router.get("/:id", async (req, res)=>{
     try{
-        const servicio = await Servicio.findById(req.params.id); 
+        const servicio = await Servicio.findById(req.params.id).populate("mascota").populate("duenio");
         if(!servicio){
             return res.status(404).json({mensaje: "Servicio no encontrado"}); 
         }
