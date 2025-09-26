@@ -4,7 +4,7 @@
     - [✅] Libertad creativa: Elige un tema que te apasione. Puede ser un ecommerce, una red social, un sistema de reservas, una plataforma de cursos, un blog, o cualquier otra idea que te motive.
     • Requisitos técnicos:
     - [✅] Debe incluir al menos dos entidades principales (por ejemplo: usuarios y productos, reservas y clientes, posts y comentarios).
-    - [❌]Define claramente las funcionalidades que tendrá tu API (por ejemplo: registro de usuarios, creación de posts, reservas, etc.).
+    - [✅]Define claramente las funcionalidades que tendrá tu API (por ejemplo: registro de usuarios, creación de posts, reservas, etc.).
 ## 2. Diseña la Base de Datos
 -[✅]Importante: Si vas a hacer un front (opcional) te recomiendo usar como base de datos MongoDB para que cuando hagas el deploy, uses la versión en la nube (Esto queda a tu elección) Si no haras deploy, puedes usar MySQL con su ORM.
 ## Crea los Endpoints
@@ -22,11 +22,11 @@
 - [✅] Valida los datos: Asegúrate de que los datos enviados a la API estén validados (por ejemplo: campos obligatorios, formato de email, etc.).
 - [✅] Protege los endpoints: Implementa rate limiting para prevenir ataques de fuerza bruta.
 ## 6. Prueba tu API
-- [❌] Usa Postman para probar todos los endpoints de tu API.
-- [❌] Asegúrate de que todas las operaciones CRUD funcionen correctamente.
-- [❌]Prueba casos extremos (por ejemplo: enviar datos incorrectos, intentar eliminar un registro que no existe, etc.).
+- [✅] Usa Postman para probar todos los endpoints de tu API.
+- [✅] Asegúrate de que todas las operaciones CRUD funcionen correctamente.
+- [✅]Prueba casos extremos (por ejemplo: enviar datos incorrectos, intentar eliminar un registro que no existe, etc.).
 ## 7. Crea un Frontend Básico (OPCIONAL)
-- [❌] Desarrolla una vista básica en HTML y CSS para interactuar con tu API.
+- [✅] Desarrolla una vista básica en HTML y CSS para interactuar con tu API.
 - [❌] Puede ser un formulario para crear registros, una lista para mostrar datos, o cualquier otra interfaz simple.
 - [❌] Usa fetch o axios para hacer solicitudes a tu API desde el frontend
 ## 8. Documenta tu Proyecto
