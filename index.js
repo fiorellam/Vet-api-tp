@@ -1,6 +1,8 @@
 const express = require("express");
-const connectDatabase = require("./database");
-const verificarToken = require('./middlewares/verificarToken')
+const cors = require('cors');
+// const cookieParser = require('cookie-parser');
+const connectDatabase = require("./backend/src/database");
+const verificarToken = require('./backend/src/middlewares/verificarToken')
 const path = require('path');
 const rateLimit = require('express-rate-limit');
 require("dotenv").config();
@@ -9,12 +11,13 @@ require("dotenv").config();
 
 const app = express();
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(cors());
+app.use(express.static(path.join(__dirname, './public')))
 const PORT = process.env.PORT || 3000;
 
 connectDatabase();
 app.get("/", (req, res) => {
-    res.send("Api funcionando");
+    res.sendFile(path.join(__dirname, './public/inicio/index.html'));
 });
 
 const loginLimiter = rateLimit({
@@ -23,13 +26,13 @@ const loginLimiter = rateLimit({
   message: { mensaje: 'Demasiados intentos de inicio de sesión. Espera unos minutos.' }
 })
 
-app.use("/api/login", loginLimiter, require("./routes/login"));
+app.use("/api/login", loginLimiter, require("./backend/src/routes/login"));
 
-app.use('/api/clientes', verificarToken, require('./routes/clientes'))
-app.use('/api/servicios', verificarToken, require('./routes/servicios'))
-app.use('/api/mascotas', verificarToken, require('./routes/mascotas'))
-app.use('/api/usuarios', verificarToken, require('./routes/usuarios')); 
-app.use("/api/accesorios",verificarToken, require("./routes/accesorios"));
+app.use('/api/clientes', verificarToken, require('./backend/src/routes/clientes'))
+app.use('/api/servicios', verificarToken, require('./backend/src/routes/servicios'))
+app.use('/api/mascotas', verificarToken, require('./backend/src/routes/mascotas'))
+app.use('/api/usuarios', verificarToken, require('./backend/src/routes/usuarios')); 
+app.use("/api/accesorios", require("./backend/src/routes/accesorios"));
 
 
 

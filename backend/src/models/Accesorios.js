@@ -17,7 +17,12 @@ const AccesorioSchema = new mongoose.Schema({
     },
     img: {
         type: String,
-    }
+    },
+    categoria: {
+        type: String, 
+        required: true
+    }, 
+
 });
 
 module.exports = mongoose.model('Accesorio', AccesorioSchema);

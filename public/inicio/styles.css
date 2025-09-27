@@ -657,7 +657,9 @@ footer{
 /* Accesorios */
 .accesories-section{
   text-align: center;
-  margin: 50px auto;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  background-color: var(--blanco);
 }
 
 .accesories-section h2{
