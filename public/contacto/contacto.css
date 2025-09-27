@@ -1,0 +1,38 @@
+:root {
+    --terracota: #D98E73;
+    --cafe-oscuro: #ac846c;
+    --arena: #F5E6CC;
+    --crema: #FFF9F5;
+    --verde: #A4B494;
+    --gris: #5C5C5C;
+    --blanco: #FFFFFF;
+}
+.contact-hero{
+    background-image: url("../images/veterinaria-gato.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: var(--crema); 
+}
+
+.contact-hero .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(147, 111, 66, 0.4);
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+}
+.contact-hero .container {
+    position: relative;
+    z-index: 1; /* Asegura que esté sobre la capa */
+}

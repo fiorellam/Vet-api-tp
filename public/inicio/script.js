@@ -1,19 +1,3 @@
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-const links = document.querySelectorAll('.nav-links a');
-console.log("HOLAAA");
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  navLinks.classList.toggle('active');
-});
-
-// Cierra menú al hacer click en un enlace
-links.forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('active');
-    hamburger.classList.remove('active');
-  });
-});
 
 // Muestra los accesorio obteniendolos de la api, se hace desde que carga la pagina principal
 document.addEventListener('DOMContentLoaded', async() => {
