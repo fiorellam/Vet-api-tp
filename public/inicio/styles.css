@@ -425,7 +425,7 @@ Muestra el ícono ✕ */
 
 .categories{
   text-align: center;
-  padding: 80px 40px;
+  padding: 50px 20px;
 }
 
 .categories h2, .promo-section h2{
@@ -657,8 +657,8 @@ footer{
 /* Accesorios */
 .accesories-section{
   text-align: center;
-  padding-top: 90px;
-  padding-bottom: 90px;
+  padding-top: 50px;
+  padding-bottom: 70px;
   background-color: var(--blanco);
 }
 
