@@ -602,7 +602,7 @@ footer{
 }
 
 .footer-brand p {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   line-height: 1.5;
   color: var(--crema);
 }
@@ -621,12 +621,12 @@ footer{
 .footer-links a {
   color: #fff;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
 }
 
 /* Columna derecha */
 .footer-socials p {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   margin-bottom: 10px;
 }
 
