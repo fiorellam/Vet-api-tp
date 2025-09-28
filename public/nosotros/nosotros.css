@@ -1,0 +1,60 @@
+:root {
+    --terracota: #D98E73;
+    --cafe-oscuro: #ac846c;
+    --arena: #F5E6CC;
+    --crema: #FFF9F5;
+    --verde: #A4B494;
+    --gris: #5C5C5C;
+    --blanco: #FFFFFF;
+}
+h1,h2,h3{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.hero-nosotros {
+  text-align: center;
+  background: url('https://images.unsplash.com/photo-1601758123927-196f60b99a64') no-repeat center center/cover;
+  color: var(--gris);
+  padding: 40px 20px;
+}
+
+.container {
+  padding: 2rem;
+}
+
+.equipo-grid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.miembro {
+  background-color: #f5ebe0;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+}
+
+.miembro img{
+    width: 60%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.miembro h3, p{
+    margin-bottom: 10px;
+}
+.miembro h3{
+    font-size: 1.5rem ;
+    color: var(--gris);
+}
+
+.miembro p,
+.quienes-somos p,
+.hero-nosotros p{
+    font-size: 1.2rem ;
+    color: var(--gris);
+    margin: 2rem 0;
+    text-align: center;
+}
