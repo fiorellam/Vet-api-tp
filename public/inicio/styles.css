@@ -579,6 +579,68 @@ Muestra el ícono ✕ */
     margin-bottom: 20px;
   }
 }
+
+/* Accesorios */
+.accesories-section{
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 70px;
+  background-color: var(--blanco);
+}
+
+.accesories-section h2{
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+
+.accesories-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.accesory-card{
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 15px;
+  transition: transform 0.3s ease;
+}
+
+.accesory-card:hover {
+  transform: translateY(-5px);
+}
+
+.accesory-card img {
+  max-width: 70%;
+  border-radius: 10px;
+}
+.accesory-card h3 {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.price {
+  font-weight: bold;
+  color: #1a2a4f;
+}
+
+.badge {
+  background: #ff0055;
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 3px 7px;
+  border-radius: 5px;
+  position: absolute;
+  margin: 10px;
+}
+
+/* Ajustar flechas */
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--gris) !important;
+}
+
 footer{
   background-color: var(--cafe-oscuro);
 }
@@ -652,59 +714,4 @@ footer{
     justify-content: center;
     display: flex;
   }
-}
-
-/* Accesorios */
-.accesories-section{
-  text-align: center;
-  padding-top: 50px;
-  padding-bottom: 70px;
-  background-color: var(--blanco);
-}
-
-.accesories-section h2{
-  font-size: 2rem;
-  margin-bottom: 3rem;
-}
-
-.accesories-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.accesory-card{
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  padding: 15px;
-  transition: transform 0.3s ease;
-}
-
-.accesory-card:hover {
-  transform: translateY(-5px);
-}
-
-.accesory-card img {
-  max-width: 70%;
-  border-radius: 10px;
-}
-.product-card h3 {
-  font-size: 1rem;
-  margin: 10px 0;
-}
-
-.price {
-  font-weight: bold;
-  color: #1a2a4f;
-}
-
-.badge {
-  background: #ff0055;
-  color: #fff;
-  font-size: 0.8rem;
-  padding: 3px 7px;
-  border-radius: 5px;
-  position: absolute;
-  margin: 10px;
 }

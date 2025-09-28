@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios</title>
+    <link rel="stylesheet" href="/inicio/styles.css">
+    <link rel="stylesheet" href="/servicios/servicios.css">
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <h1 class="service-title">Servicios</h1>
+    <section class="appointment-section">
+        <div class="appointment-container">
+            <h2>Agenda una cita para tu mascota</h2>
+
+            <form id="appointmentForm">
+                <div class="form-group">
+                    <label for="service">Selecciona un servicio</label>
+                    <select id="service" required>
+                        <option value=""> --Selecciona un servicio</option>
+                    </select>
+                    <p class="service-description"></p>
+                </div>
+                <div class="form-group">
+                    <label for="date">Selecciona una fecha</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Selecciona una hora</label>
+                    <div class="time-slots">
+                    <button type="button" class="time-btn">09:00 am</button>
+                    <button type="button" class="time-btn">10:00 am</button>
+                    <button type="button" class="time-btn">11:00 am</button>
+                    <button type="button" class="time-btn">12:00 pm</button>
+                    <button type="button" class="time-btn">01:00 pm</button>
+                    <button type="button" class="time-btn">02:00 pm</button>
+                    <button type="button" class="time-btn">03:00 pm</button>
+                    <button type="button" class="time-btn">04:00 pm</button>
+                    <button type="button" class="time-btn">05:00 pm</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Escribe tu correo</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <p class="note"> Los horarios son del Centro de México</p>
+                <button type="submit" class="submit-btn">Agendar</button>
+            </form>
+        </div>
+    </section>
+    <div id="footer-container"></div>
+    <script src="/shared/navbar.js"></script>
+    <script src="/shared/footer.js"></script>
+    <script src="/servicios/servicios.js"></script>
+</body>
+</html>

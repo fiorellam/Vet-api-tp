@@ -7,6 +7,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/inicio/styles.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
 </head>
 <body>
     <div id="navbar-container"></div>
@@ -110,7 +115,7 @@
         </div>
     </section>
 
-    <section class="accesories-section">
+    <!-- <section class="accesories-section">
         <div class="container">
             <h2>Accesorios recomendados</h2>
             <div class="accesories-grid">
@@ -120,6 +125,33 @@
                     <h3>Juguete para perro</h3>
                     <p class="price">$50.00</p>
                 </div>
+            </div>
+        </div>
+    </section> -->
+    <section class="accesories-section">
+        <div class="container">
+            <h2>Accesorios recomendados</h2>
+            <div class="swiper accesories-swiper">
+                <div class="swiper-wrapper accesories-grid">
+                    <div class="swiper-slide accesory-card">
+                        <span class="badge">Hot</span>
+                        <img src="https://cdn-icons-png.flaticon.com/512/1650/1650528.png" alt="Juguetes para perro">
+                        <h3>Juguete para perro</h3>
+                        <p class="price">$50.00</p>
+                    </div>
+                    <div class="swiper-slide accesory-card">
+                        <span class="badge">Hot</span>
+                        <img src="https://cdn-icons-png.flaticon.com/512/1650/1650528.png" alt="Juguetes para perro">
+                        <h3>Juguete para perro</h3>
+                        <p class="price">$50.00</p>
+                    </div>
+                </div>
+                <!-- navegación -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+
+                <!-- paginación (opcional) -->
+                <div class="swiper-pagination"></div>
             </div>
         </div>
     </section>
@@ -159,8 +191,8 @@
         </div>
     </section>
     <div id="footer-container"></div>
-<script src="/inicio/script.js"></script>
-<script src="/shared/navbar.js"></script>
-<script src="/shared/footer.js"></script>
+    <script src="/shared/navbar.js"></script>
+    <script src="/shared/footer.js"></script>
+    <script src="/inicio/script.js" defer></script>
 </body>
 </html>

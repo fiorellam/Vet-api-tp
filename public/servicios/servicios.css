@@ -1,0 +1,111 @@
+:root {
+    --terracota: #D98E73;
+    --cafe-oscuro: #ac846c;
+    --arena: #F5E6CC;
+    --crema: #FFF9F5;
+    --verde: #A4B494;
+    --gris: #5C5C5C;
+    --blanco: #FFFFFF;
+}
+h1.service-title{
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+.appointment-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  background: var(--crema);
+}
+
+.appointment-container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 6px 20px rgba(147, 111, 66, 0.4);
+  max-width: 700px;
+  width: 100%;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--cafe-oscuro);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+
+input[type="date"],
+input[type="email"],
+select, 
+option{
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid rgba(147, 111, 66, 0.4);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+p.service-description{
+    font-size: 1rem;
+    color: var(--gris);
+    margin: 1rem 0;
+}
+
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
+
+.time-btn {
+  padding: 0.7rem 1rem;
+  background: var(--crema);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.time-btn:hover {
+  background: var(--terracota);
+}
+
+.time-btn.active {
+  background: var(--cafe-oscuro);
+  color: #fff;
+}
+
+.note {
+  font-size: 0.9rem;
+  color: var(--gris);
+  margin-bottom: 1rem;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--cafe-oscuro);
+  border: none;
+  color: var(--crema);
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.submit-btn:hover {
+  background: var(--terracota);
+}
