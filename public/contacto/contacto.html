@@ -20,12 +20,55 @@
         </div>
     </section>
 
-    <div class="contact-cards">
-        <div class="contact-card">
-            <img class="icon" src="" alt="">
-            <h3 class="contact-card-title"></h3>
-            <p class="contact-card-text"></p>
+    <!-- Formulario diseno -->
+    <section class="contact-section container">
+        <div class="contact-container">
+            <div class="contact-form">
+                <form>
+                    <div class="form-row">
+                        <input type="email" placeholder="Email" required>
+                        <input type="tel" placeholder="Teléfono"> 
+                    </div>
+                   <input type="text" placeholder="Nombre" required>
+                   <textarea placeholder="Mensaje"></textarea>
+                   <button type="submit" class="btn-contact">Enviar</button>
+                </form>
+            </div>
+
+            <!-- Newsletter div -->
+            <div class="newsletter-box">
+                <h3>Nuestro Boletín Informativo</h3>
+                <p>Suscríbete para saber más sobre huellas bonitas</p>
+                <form>
+                    <input type="email" placeholder="Email" required>
+                    <button class="btn-newsletter">Suscribirse</button>
+                </form>
+            </div>
         </div>
+    </section>
+
+    <!-- Cards contacto -->
+    <div class="contact-cards container">
+        <div class="contact-card phone">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone-call-icon lucide-phone-call"><path d="M13 2a9 9 0 0 1 9 9"/><path d="M13 6a5 5 0 0 1 5 5"/><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+            <h4 class="contact-card-title">(+646) 191 78 95</h4>
+            <p class="contact-card-text">Teléfono en el que puedes contactarnos de 9:00 am a 3:00 pm</p>
+        </div>
+        <div class="contact-card mail">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail-icon lucide-mail"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+            <h4 class="contact-card-title">huellasbonitas@gmail.com</h4>
+            <p class="contact-card-text">Correo electrónico, contestaremos a la brevedad</p>
+        </div>
+        <div class="contact-card location">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail-icon lucide-mail"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+            <h4 class="contact-card-title">C. Novena 1251, Obrera, 22830 Ensenada, B.C.</h4>
+            <p class="contact-card-text">Lugar donde puedes encontrarnos</p>
+        </div>
+    </div>
+    <!-- Mapa -->
+    <div class="container map-container">
+        <h2>Ubicación</h2>
+        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3388.39570230378!2d-116.61470789999998!3d31.86865549999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d8927c018c562d%3A0x6f39b9dbd8e7a81f!2sCl%C3%ADnica%20Farmacia%20y%20Veterinaria%20Rico!5e0!3m2!1ses!2smx!4v1759000012836!5m2!1ses!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <div id="footer-container"></div>
     <script src="/shared/navbar.js"></script>
