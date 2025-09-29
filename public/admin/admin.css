@@ -7,7 +7,11 @@
     --gris: #5C5C5C;
     --blanco: #FFFFFF;
 }
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Hace que el ancho y alto de los elementos incluya el padding y border (si un div mide 300px, siempre será 300px, no 300 + padding + border).*/ 
+}
 body { 
     font-family: Arial, 
     sans-serif; margin: 20px;
@@ -34,6 +38,12 @@ body {
 .content.active { 
     display: block; 
 }
+button{
+    color: var(--blanco);
+    background-color: var(--cafe-oscuro);
+    border: none;
+    border-radius: 10px;
+}
 form { 
     margin-bottom: 20px; 
     padding: 15px; border: 1px solid var(--cafe-oscuro); border-radius: 5px; 
@@ -42,11 +52,35 @@ input, select, button {
     margin: 5px 0; 
     padding: 8px; 
     width: 100%; 
+    border: 1px solid var(--cafe-oscuro);
+    border-radius: 10px;
 }
-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-button.edit { background: orange; color: white; border: none; padding: 5px 10px; margin: 2px; cursor: pointer; }
-button.delete { background: red; color: white; border: none; padding: 5px 10px; margin: 2px; cursor: pointer; }
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 15px; 
+}
+th, td { 
+    border: 1px solid var(--cafe-oscuro); 
+    padding: 8px; 
+    text-align: left; 
+}
+button.edit { 
+    background: var(--arena); 
+    color: var(--blanco); 
+    border: none; 
+    padding: 5px 10px; 
+    margin: 2px; 
+    cursor: pointer; 
+}
+button.delete { 
+    background: rgb(251, 80, 80); 
+    color: var(--blanco); 
+    border: none; 
+    padding: 5px 10px; 
+    margin: 2px; 
+    cursor: pointer; 
+}
 /*
 body { 
     font-family: Arial, sans-serif; 

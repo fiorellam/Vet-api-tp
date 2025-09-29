@@ -1,617 +1,78 @@
-<!-- <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Administrador API Veterinaria</title>
-  <link rel="stylesheet" href="/admin/admin.css">
-</head>
-<body>
-  <div class="container">
-    <h1>Administrador API Veterinaria</h1>
-
-    <label for="entity">Selecciona entidad</label>
-    <select id="entity">
-      <option value="mascotas">Mascotas</option>
-      <option value="clientes">Clientes</option>
-      <option value="servicios">Servicios</option>
-      <option value="accesorios">Accesorios</option>
-    </select>
-
-    <div class="grid">
-      <div>
-        <label for="id">ID (para buscar, actualizar o eliminar)</label>
-        <input type="text" id="id" placeholder="Ej: 68cc71b6cdac478adc6d2a7d">
-      </div>
-      <div>
-        <label for="data">JSON Data</label>
-        <textarea id="data" rows="5" placeholder='{"nombre": "Jack", "tipo": "perro"}'></textarea>
-      </div>
-    </div>
-
-    <div class="grid">
-      <button onclick="getAll()">GET Todos</button>
-      <button onclick="getById()">GET por ID</button>
-      <button onclick="create()">POST (Crear)</button>
-      <button onclick="update()">PUT (Actualizar)</button>
-      <button onclick="remove()">DELETE (Eliminar)</button>
-    </div>
-
-    <h2>Resultado</h2>
-    <pre id="output">Aquí aparecerá la respuesta...</pre>
-  </div>
-  <script src="/admin/admin.js"></script>
-</body>
-</html> -->
-<!-- <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Administrador API Veterinaria</title>
-  <style>
-    body { font-family: Arial, sans-serif; background: #f4f4f9; padding: 20px; }
-    h1 { text-align: center; color: #333; }
-    .tabs { display: flex; justify-content: center; margin-bottom: 20px; }
-    .tab { padding: 10px 20px; margin: 0 5px; cursor: pointer; border-radius: 5px 5px 0 0; background: #ddd; }
-    .tab.active { background: #007bff; color: white; font-weight: bold; }
-    .content { display: none; background: white; padding: 20px; border-radius: 0 5px 5px 5px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-    .content.active { display: block; }
-    label { font-weight: bold; display: block; margin-top: 10px; }
-    input, textarea, button { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ddd; border-radius: 5px; }
-    textarea { font-family: monospace; }
-    button { background: #007bff; color: white; cursor: pointer; }
-    button:hover { background: #0056b3; }
-    pre { background: #272822; color: #f8f8f2; padding: 10px; border-radius: 5px; overflow-x: auto; margin-top: 15px; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
-  </style>
-</head>
-<body>
-  <h1>Administrador API Veterinaria</h1>
-
-  <div class="tabs">
-    <div class="tab active" data-tab="mascotas">🐶 Mascotas</div>
-    <div class="tab" data-tab="clientes">👤 Clientes</div>
-    <div class="tab" data-tab="servicios">💉 Servicios</div>
-    <div class="tab" data-tab="accesorios">🎾 Accesorios</div>
-  </div>
-
-  <div id="mascotas" class="content active">
-    <h2>Mascotas</h2>
-    <label>ID</label>
-    <input type="text" id="mascotas-id">
-    <label>JSON Data</label>
-    <textarea id="mascotas-data" rows="5" placeholder='{"nombre":"Jack","tipo":"perro"}'></textarea>
-    <div class="grid">
-      <button onclick="getAll('mascotas')">GET Todos</button>
-      <button onclick="getById('mascotas')">GET por ID</button>
-      <button onclick="create('mascotas')">POST Crear</button>
-      <button onclick="update('mascotas')">PUT Actualizar</button>
-      <button onclick="removeEntity('mascotas')">DELETE Eliminar</button>
-    </div>
-    <pre id="mascotas-output">Resultado...</pre>
-  </div>
-
-  <div id="clientes" class="content">
-    <h2>Clientes</h2>
-    <label>ID</label>
-    <input type="text" id="clientes-id">
-    <label>JSON Data</label>
-    <textarea id="clientes-data" rows="5" placeholder='{"nombre":"Juan Perez","telefono":"0113456789"}'></textarea>
-    <div class="grid">
-      <button onclick="getAll('clientes')">GET Todos</button>
-      <button onclick="getById('clientes')">GET por ID</button>
-      <button onclick="create('clientes')">POST Crear</button>
-      <button onclick="update('clientes')">PUT Actualizar</button>
-      <button onclick="removeEntity('clientes')">DELETE Eliminar</button>
-    </div>
-    <pre id="clientes-output">Resultado...</pre>
-  </div>
-
-  <div id="servicios" class="content">
-    <h2>Servicios</h2>
-    <label>ID</label>
-    <input type="text" id="servicios-id">
-    <label>JSON Data</label>
-    <textarea id="servicios-data" rows="5" placeholder='{"nombre":"Consulta general","precio":350}'></textarea>
-    <div class="grid">
-      <button onclick="getAll('servicios')">GET Todos</button>
-      <button onclick="getById('servicios')">GET por ID</button>
-      <button onclick="create('servicios')">POST Crear</button>
-      <button onclick="update('servicios')">PUT Actualizar</button>
-      <button onclick="removeEntity('servicios')">DELETE Eliminar</button>
-    </div>
-    <pre id="servicios-output">Resultado...</pre>
-  </div>
-
-  <div id="accesorios" class="content">
-    <h2>Accesorios</h2>
-    <label>ID</label>
-    <input type="text" id="accesorios-id">
-    <label>JSON Data</label>
-    <textarea id="accesorios-data" rows="5" placeholder='{"nombre":"Pelota","precio":100}'></textarea>
-    <div class="grid">
-      <button onclick="getAll('accesorios')">GET Todos</button>
-      <button onclick="getById('accesorios')">GET por ID</button>
-      <button onclick="create('accesorios')">POST Crear</button>
-      <button onclick="update('accesorios')">PUT Actualizar</button>
-      <button onclick="removeEntity('accesorios')">DELETE Eliminar</button>
-    </div>
-    <pre id="accesorios-output">Resultado...</pre>
-  </div>
-
-  <script>
-    const baseUrl = "http://localhost:3000/api";
-
-    // Cambiar de tab
-    document.querySelectorAll(".tab").forEach(tab => {
-      tab.addEventListener("click", () => {
-        document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-        document.querySelectorAll(".content").forEach(c => c.classList.remove("active"));
-        tab.classList.add("active");
-        document.getElementById(tab.dataset.tab).classList.add("active");
-      });
-    });
-
-    async function request(entity, method = "GET", body = null, id = "") {
-      try {
-        const url = id ? `${baseUrl}/${entity}/${id}` : `${baseUrl}/${entity}`;
-        const options = { method, headers: { "Content-Type": "application/json" } };
-        if (body) options.body = JSON.stringify(body);
-        const res = await fetch(url, options);
-        const data = await res.json();
-        document.getElementById(`${entity}-output`).textContent = JSON.stringify(data, null, 2);
-      } catch (err) {
-        document.getElementById(`${entity}-output`).textContent = "❌ Error: " + err.message;
-      }
-    }
-
-    function getId(entity) {
-      return document.getElementById(`${entity}-id`).value.trim();
-    }
-
-    function getData(entity) {
-      try {
-        return JSON.parse(document.getElementById(`${entity}-data`).value || "{}");
-      } catch {
-        alert("JSON inválido en " + entity);
-        return null;
-      }
-    }
-
-    function getAll(entity) { request(entity); }
-    function getById(entity) { const id = getId(entity); if (!id) return alert("Escribe un ID"); request(entity, "GET", null, id); }
-    function create(entity) { const data = getData(entity); if (!data) return; request(entity, "POST", data); }
-    function update(entity) { const id = getId(entity); const data = getData(entity); if (!id || !data) return alert("ID y JSON requeridos"); request(entity, "PUT", data, id); }
-    function removeEntity(entity) { const id = getId(entity); if (!id) return alert("Escribe un ID"); request(entity, "DELETE", null, id); }
-  </script>
-</body>
-</html>
- -->
-<!-- <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Admin CRUD API</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    h2 { margin-top: 20px; }
-    .tabs { display: flex; margin-bottom: 20px; }
-    .tab { padding: 10px 20px; margin-right: 5px; background: #eee; cursor: pointer; }
-    .tab.active { background: #0bada7; color: white; }
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
-    form { margin: 10px 0; padding: 10px; border: 1px solid #ccc; }
-    label { display: block; margin-top: 5px; }
-    input, select { width: 100%; padding: 5px; margin-top: 2px; }
-    button { margin-top: 10px; padding: 6px 12px; background: #0bada7; color: white; border: none; cursor: pointer; }
-    button:hover { background: #09938d; }
-    pre { background: #f4f4f4; padding: 10px; overflow: auto; max-height: 250px; }
-  </style>
-</head>
-<body>
-
-  <h1>Administrador CRUD de API</h1>
-
-  <div class="tabs">
-    <div class="tab active" data-tab="mascotas">Mascotas</div>
-    <div class="tab" data-tab="clientes">Clientes</div>
-    <div class="tab" data-tab="servicios">Servicios</div>
-    <div class="tab" data-tab="accesorios">Accesorios</div>
-  </div>
-
-  <div id="mascotas" class="tab-content active">
-    <h2>Mascotas</h2>
-
-    <button id="btnGetMascotas">Obtener todas</button>
-    <pre id="listMascotas"></pre>
-
-    <h3>Buscar Mascota por ID</h3>
-    <input type="text" id="idMascotaBuscar" placeholder="ID mascota">
-    <button id="btnGetMascotaById">Buscar</button>
-    <pre id="mascotaById"></pre>
-
-    <h3>Dar de alta Mascota</h3>
-    <form id="formMascota">
-      <label>Nombre</label><input id="nombreMascota">
-      <label>Tipo</label><input id="tipoMascota">
-      <label>Raza</label><input id="razaMascota">
-      <label>Edad</label><input type="number" id="edadMascota">
-      <label>Dueño</label><select id="duenoMascota"></select>
-      <button type="submit">Guardar</button>
-    </form>
-    <pre id="responseMascota"></pre>
-
-    <h3>Actualizar Mascota</h3>
-    <form id="formUpdateMascota">
-      <label>ID Mascota</label><input id="idUpdateMascota">
-      <label>Nuevo Nombre</label><input id="nombreUpdateMascota">
-      <label>Nuevo Tipo</label><input id="tipoUpdateMascota">
-      <label>Nueva Raza</label><input id="razaUpdateMascota">
-      <label>Nueva Edad</label><input type="number" id="edadUpdateMascota">
-      <label>Nuevo Dueño</label><select id="duenoUpdateMascota"></select>
-      <button type="submit">Actualizar</button>
-    </form>
-    <pre id="responseUpdateMascota"></pre>
-
-    <h3>Eliminar Mascota</h3>
-    <input id="idMascotaDelete" placeholder="ID mascota">
-    <button id="btnDeleteMascota">Eliminar</button>
-    <pre id="responseDeleteMascota"></pre>
-  </div>
-
-  <div id="clientes" class="tab-content">
-    <h2>Clientes</h2>
-    <button id="btnGetClientes">Obtener todos</button>
-    <pre id="listClientes"></pre>
-
-    <h3>Buscar Cliente por ID</h3>
-    <input id="idClienteBuscar" placeholder="ID cliente">
-    <button id="btnGetClienteById">Buscar</button>
-    <pre id="clienteById"></pre>
-
-    <h3>Dar de alta Cliente</h3>
-    <form id="formCliente">
-      <label>Nombre</label><input id="nombreCliente">
-      <label>Teléfono</label><input id="telefonoCliente">
-      <label>Dirección</label><input id="direccionCliente">
-      <button type="submit">Guardar</button>
-    </form>
-    <pre id="responseCliente"></pre>
-
-    <h3>Actualizar Cliente</h3>
-    <form id="formUpdateCliente">
-      <label>ID Cliente</label><input id="idUpdateCliente">
-      <label>Nuevo Nombre</label><input id="nombreUpdateCliente">
-      <label>Nuevo Teléfono</label><input id="telefonoUpdateCliente">
-      <label>Nueva Dirección</label><input id="direccionUpdateCliente">
-      <button type="submit">Actualizar</button>
-    </form>
-    <pre id="responseUpdateCliente"></pre>
-
-    <h3>Eliminar Cliente</h3>
-    <input id="idClienteDelete" placeholder="ID cliente">
-    <button id="btnDeleteCliente">Eliminar</button>
-    <pre id="responseDeleteCliente"></pre>
-  </div>
-
-  <div id="servicios" class="tab-content">
-    <h2>Servicios</h2>
-    <button id="btnGetServicios">Obtener todos</button>
-    <pre id="listServicios"></pre>
-
-    <h3>Buscar Servicio por ID</h3>
-    <input id="idServicioBuscar" placeholder="ID servicio">
-    <button id="btnGetServicioById">Buscar</button>
-    <pre id="servicioById"></pre>
-
-    <h3>Dar de alta Servicio</h3>
-    <form id="formServicio">
-      <label>Nombre</label><input id="nombreServicio">
-      <label>Descripción</label><input id="descripcionServicio">
-      <label>Tipo</label><input id="tipoServicio">
-      <label>Precio</label><input type="number" id="precioServicio">
-      <label>Dueño</label><select id="duenoServicio"></select>
-      <label>Mascota</label><select id="mascotaServicio"></select>
-      <button type="submit">Guardar</button>
-    </form>
-    <pre id="responseServicio"></pre>
-
-    <h3>Actualizar Servicio</h3>
-    <form id="formUpdateServicio">
-      <label>ID Servicio</label><input id="idUpdateServicio">
-      <label>Nuevo Nombre</label><input id="nombreUpdateServicio">
-      <label>Nueva Descripción</label><input id="descripcionUpdateServicio">
-      <label>Nuevo Tipo</label><input id="tipoUpdateServicio">
-      <label>Nuevo Precio</label><input type="number" id="precioUpdateServicio">
-      <label>Nuevo Dueño</label><select id="duenoUpdateServicio"></select>
-      <label>Nueva Mascota</label><select id="mascotaUpdateServicio"></select>
-      <button type="submit">Actualizar</button>
-    </form>
-    <pre id="responseUpdateServicio"></pre>
-
-    <h3>Eliminar Servicio</h3>
-    <input id="idServicioDelete" placeholder="ID servicio">
-    <button id="btnDeleteServicio">Eliminar</button>
-    <pre id="responseDeleteServicio"></pre>
-  </div>
-
-  <div id="accesorios" class="tab-content">
-    <h2>Accesorios</h2>
-    <button id="btnGetAccesorios">Obtener todos</button>
-    <pre id="listAccesorios"></pre>
-
-    <h3>Buscar Accesorio por ID</h3>
-    <input id="idAccesorioBuscar" placeholder="ID accesorio">
-    <button id="btnGetAccesorioById">Buscar</button>
-    <pre id="accesorioById"></pre>
-
-    <h3>Dar de alta Accesorio</h3>
-    <form id="formAccesorio">
-      <label>Nombre</label><input id="nombreAccesorio">
-      <label>Descripción</label><input id="descripcionAccesorio">
-      <label>Precio</label><input type="number" id="precioAccesorio">
-      <label>Imagen URL</label><input id="imgAccesorio">
-      <label>Categoría</label><input id="categoriaAccesorio">
-      <button type="submit">Guardar</button>
-    </form>
-    <pre id="responseAccesorio"></pre>
-
-    <h3>Actualizar Accesorio</h3>
-    <form id="formUpdateAccesorio">
-      <label>ID Accesorio</label><input id="idUpdateAccesorio">
-      <label>Nuevo Nombre</label><input id="nombreUpdateAccesorio">
-      <label>Nueva Descripción</label><input id="descripcionUpdateAccesorio">
-      <label>Nuevo Precio</label><input type="number" id="precioUpdateAccesorio">
-      <label>Nueva Imagen URL</label><input id="imgUpdateAccesorio">
-      <label>Nueva Categoría</label><input id="categoriaUpdateAccesorio">
-      <button type="submit">Actualizar</button>
-    </form>
-    <pre id="responseUpdateAccesorio"></pre>
-
-    <h3>Eliminar Accesorio</h3>
-    <input id="idAccesorioDelete" placeholder="ID accesorio">
-    <button id="btnDeleteAccesorio">Eliminar</button>
-    <pre id="responseDeleteAccesorio"></pre>
-  </div>
-
-  <script src="admin.js"></script>
-</body>
-</html> -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <title>Panel de Administración</title>
   <link rel="stylesheet" href="/admin/admin.css">
+  <link rel="stylesheet" href="/inicio/styles.css">
 </head>
 <body>
-  <h1>Panel de Administración</h1>
+    <div class="container">
 
-  <div class="tabs">
-    <div class="tab active" data-tab="mascotas">🐶 Mascotas</div>
-    <div class="tab" data-tab="duenos">👤 Dueños</div>
-    <div class="tab" data-tab="servicios">💆 Servicios</div>
-    <div class="tab" data-tab="citas">📅 Citas</div>
-  </div>
+        <h1>Panel de Administración</h1>
+        
+        <div class="tabs">
+            <div class="tab active" data-tab="mascotas">🐶 Mascotas</div>
+            <div class="tab" data-tab="duenos">👤 Dueños</div>
+            <div class="tab" data-tab="servicios">💆 Servicios</div>
+            <div class="tab" data-tab="citas">📅 Citas</div>
+        </div>
 
-  <!-- Mascotas -->
-  <div class="content active" id="mascotas">
-    <h2>Gestionar Mascotas</h2>
-    <form id="formMascota">
-      <input type="hidden" id="idMascota">
-      <input type="text" id="nombreMascota" placeholder="Nombre de la mascota" required>
-      <input type="text" id="especieMascota" placeholder="Especie" required>
-      <select id="duenoMascota" required></select>
-      <button type="submit">💾 Guardar Mascota</button>
-    </form>
-    <table id="tablaMascotas"></table>
-  </div>
+        <!-- Mascotas -->
+        <div class="content active" id="mascotas">
+            <h2>Gestionar Mascotas</h2>
+            <form id="formMascota">
+                <input  id="idMascota">
+                <input type="text" id="nombreMascota" placeholder="Nombre de la mascota" required>
+                <input type="text" id="tipoMascota" placeholder="Tipo Mascota Ej. Perro, Gato, Ave, etc" required>
+                <input type="text" id="razaMascota" placeholder="Raza Mascota" required>
+                <input type="text" id="edadMascota" placeholder="Edad Mascota">
+                <select id="duenoMascota" required>
+                    <option value="">--Selecciona al dueño de la mascota</option>
+                </select>
+                <button type="submit">💾 Guardar Mascota</button>
+            </form>
+            <table id="tablaMascotas"></table>
+        </div>
+        
+        <!-- Dueños -->
+        <div class="content" id="duenos">
+            <h2>Gestionar Dueños</h2>
+            <form id="formDueno">
+            <input type="hidden" id="idDueno">
+            <input type="text" id="nombreDueno" placeholder="Nombre del dueño" required>
+            <input type="email" id="emailDueno" placeholder="Email del dueño" required>
+            <button type="submit">💾 Guardar Dueño</button>
+        </form>
+            <table id="tablaClientes"></table>
+        </div>
 
-  <!-- Dueños -->
-  <div class="content" id="duenos">
-    <h2>Gestionar Dueños</h2>
-    <form id="formDueno">
-      <input type="hidden" id="idDueno">
-      <input type="text" id="nombreDueno" placeholder="Nombre del dueño" required>
-      <input type="email" id="emailDueno" placeholder="Email del dueño" required>
-      <button type="submit">💾 Guardar Dueño</button>
-    </form>
-    <table id="tablaDuenos"></table>
-  </div>
+        <!-- Servicios -->
+        <div class="content" id="servicios">
+            <h2>Gestionar Servicios</h2>
+            <form id="formServicio">
+            <input type="hidden" id="idServicio">
+            <input type="text" id="nombreServicio" placeholder="Nombre del servicio" required>
+            <input type="number" id="precioServicio" placeholder="Precio" required>
+            <button type="submit">💾 Guardar Servicio</button>
+            </form>
+            <table id="tablaServicios"></table>
+        </div>
 
-  <!-- Servicios -->
-  <div class="content" id="servicios">
-    <h2>Gestionar Servicios</h2>
-    <form id="formServicio">
-      <input type="hidden" id="idServicio">
-      <input type="text" id="nombreServicio" placeholder="Nombre del servicio" required>
-      <input type="number" id="precioServicio" placeholder="Precio" required>
-      <button type="submit">💾 Guardar Servicio</button>
-    </form>
-    <table id="tablaServicios"></table>
-  </div>
-
-  <!-- Citas -->
-  <div class="content" id="citas">
-    <h2>Gestionar Citas</h2>
-    <form id="formCita">
-      <input type="hidden" id="idCita">
-      <select id="mascotaCita" required></select>
-      <select id="servicioCita" required></select>
-      <input type="date" id="fechaCita" required>
-      <input type="time" id="horaCita" required>
-      <button type="submit">💾 Guardar Cita</button>
-    </form>
-    <table id="tablaCitas"></table>
-  </div>
-
-  <script>
-    // ------------------ Tabs ------------------
-    document.querySelectorAll('.tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
-        tab.classList.add('active');
-        document.getElementById(tab.dataset.tab).classList.add('active');
-      });
-    });
-
-    // ------------------ Helpers ------------------
-    async function fetchJSON(url, options = {}) {
-      const res = await fetch(url, options);
-      if (!res.ok) throw new Error(`Error: ${res.status}`);
-      return await res.json();
-    }
-
-    function renderTable(data, tablaId, entidad) {
-      const tabla = document.getElementById(tablaId);
-      if (data.length === 0) {
-        tabla.innerHTML = "<tr><td colspan='5'>Sin registros</td></tr>";
-        return;
-      }
-      const headers = Object.keys(data[0]);
-      tabla.innerHTML = `
-        <thead>
-          <tr>${headers.map(h => `<th>${h}</th>`).join('')}<th>Acciones</th></tr>
-        </thead>
-        <tbody>
-          ${data.map(item => `
-            <tr>
-              ${headers.map(h => `<td>${item[h]}</td>`).join('')}
-              <td>
-                <button class="edit" onclick="editar('${entidad}', ${item.id})">✏️</button>
-                <button class="delete" onclick="eliminar('${entidad}', ${item.id})">🗑️</button>
-              </td>
-            </tr>
-          `).join('')}
-        </tbody>`;
-    }
-
-    // ------------------ CRUD ------------------
-    async function cargar(entidad) {
-      const data = await fetchJSON(`/api/${entidad}`);
-      renderTable(data, `tabla${capitalize(entidad)}`, entidad);
-      if (entidad === "duenos") cargarSelectDuenos(data);
-      if (entidad === "mascotas") cargarSelectMascotas(data);
-      if (entidad === "servicios") cargarSelectServicios(data);
-    }
-
-    async function guardar(entidad, datos, id = null) {
-      const url = id ? `/api/${entidad}/${id}` : `/api/${entidad}`;
-      const method = id ? "PUT" : "POST";
-      await fetchJSON(url, {
-        method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(datos)
-      });
-      await cargar(entidad);
-    }
-
-    async function editar(entidad, id) {
-      const item = await fetchJSON(`/api/${entidad}/${id}`);
-      if (entidad === "mascotas") {
-        document.getElementById("idMascota").value = item.id;
-        document.getElementById("nombreMascota").value = item.nombre;
-        document.getElementById("especieMascota").value = item.especie;
-        document.getElementById("duenoMascota").value = item.duenoId;
-      }
-      if (entidad === "duenos") {
-        document.getElementById("idDueno").value = item.id;
-        document.getElementById("nombreDueno").value = item.nombre;
-        document.getElementById("emailDueno").value = item.email;
-      }
-      if (entidad === "servicios") {
-        document.getElementById("idServicio").value = item.id;
-        document.getElementById("nombreServicio").value = item.nombre;
-        document.getElementById("precioServicio").value = item.precio;
-      }
-      if (entidad === "citas") {
-        document.getElementById("idCita").value = item.id;
-        document.getElementById("mascotaCita").value = item.mascotaId;
-        document.getElementById("servicioCita").value = item.servicioId;
-        document.getElementById("fechaCita").value = item.fecha;
-        document.getElementById("horaCita").value = item.hora;
-      }
-    }
-
-    async function eliminar(entidad, id) {
-      if (!confirm("¿Seguro que deseas eliminar?")) return;
-      await fetchJSON(`/api/${entidad}/${id}`, { method: "DELETE" });
-      await cargar(entidad);
-    }
-
-    // ------------------ Selects ------------------
-    function cargarSelectDuenos(duenos) {
-      const select = document.getElementById("duenoMascota");
-      select.innerHTML = duenos.map(d => `<option value="${d.id}">${d.nombre}</option>`).join('');
-    }
-
-    function cargarSelectMascotas(mascotas) {
-      const select = document.getElementById("mascotaCita");
-      select.innerHTML = mascotas.map(m => `<option value="${m.id}">${m.nombre}</option>`).join('');
-    }
-
-    function cargarSelectServicios(servicios) {
-      const select = document.getElementById("servicioCita");
-      select.innerHTML = servicios.map(s => `<option value="${s.id}">${s.nombre}</option>`).join('');
-    }
-
-    // ------------------ Formularios ------------------
-    document.getElementById("formMascota").addEventListener("submit", async e => {
-      e.preventDefault();
-      const datos = {
-        nombre: document.getElementById("nombreMascota").value,
-        especie: document.getElementById("especieMascota").value,
-        duenoId: document.getElementById("duenoMascota").value
-      };
-      const id = document.getElementById("idMascota").value || null;
-      await guardar("mascotas", datos, id);
-      e.target.reset();
-    });
-
-    document.getElementById("formDueno").addEventListener("submit", async e => {
-      e.preventDefault();
-      const datos = {
-        nombre: document.getElementById("nombreDueno").value,
-        email: document.getElementById("emailDueno").value
-      };
-      const id = document.getElementById("idDueno").value || null;
-      await guardar("duenos", datos, id);
-      e.target.reset();
-    });
-
-    document.getElementById("formServicio").addEventListener("submit", async e => {
-      e.preventDefault();
-      const datos = {
-        nombre: document.getElementById("nombreServicio").value,
-        precio: document.getElementById("precioServicio").value
-      };
-      const id = document.getElementById("idServicio").value || null;
-      await guardar("servicios", datos, id);
-      e.target.reset();
-    });
-
-    document.getElementById("formCita").addEventListener("submit", async e => {
-      e.preventDefault();
-      const datos = {
-        mascotaId: document.getElementById("mascotaCita").value,
-        servicioId: document.getElementById("servicioCita").value,
-        fecha: document.getElementById("fechaCita").value,
-        hora: document.getElementById("horaCita").value
-      };
-      const id = document.getElementById("idCita").value || null;
-      await guardar("citas", datos, id);
-      e.target.reset();
-    });
-
-    // ------------------ Utils ------------------
-    function capitalize(str) {
-      return str.charAt(0).toUpperCase() + str.slice(1);
-    }
-
-    // ------------------ Init ------------------
-    ["duenos", "mascotas", "servicios", "citas"].forEach(entidad => cargar(entidad));
-  </script>
+        <!-- Citas -->
+        <div class="content" id="citas">
+            <h2>Gestionar Citas</h2>
+            <form id="formCita">
+            <input type="hidden" id="idCita">
+            <select id="mascotaCita" required></select>
+            <select id="servicioCita" required></select>
+            <input type="date" id="fechaCita" required>
+            <input type="time" id="horaCita" required>
+            <button type="submit">💾 Guardar Cita</button>
+            </form>
+            <table id="tablaCitas"></table>
+        </div>
+    </div>
+    <script src="/admin/admin.js"></script>
 </body>
 </html>

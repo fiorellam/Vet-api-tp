@@ -33,9 +33,11 @@ JWT_SECRET=tu_secreto
 
 
 ✅Ejecutar la API:
-npm start         # Para producción
-npm run dev       # Para desarrollo con nodemon
-
+Agregar al archivo package.json en la seccion de "scripts"
+"scripts": {
+    "start": "node index.js", # Para producción
+    "dev": "nodemon index.js" # Para desarrollo con nodemon
+  },
 
 🛣 Modelos y Rutas: 
 
@@ -144,6 +146,47 @@ backend/src
 │  └─ usuarios.js             # Rutas CRUD para usuarios
 ├─ database.js                # Configuración y conexión a MongoDB
 └─ index.js                   # Archivo principal que levanta el servidor
+└─ package.json               # Descrip. gral del proyecto, comandos y dependencias
+
+📁 Estructura del Frontend: 
+public/
+├── accesorios/               # Html, css y js para accesorios
+│   ├── accesorios.html
+│   ├── accesorios.css
+│   └── accesorios.js
+│
+├── admin/                    # Html, css y js para administrador
+│   ├── admin.html
+│   ├── admin.css
+│   └── admin.js
+│
+├── contacto/                 # Html, css para contacto
+│   ├── contacto.html
+│   └── contacto.css
+│
+├── images/           
+│   └── [Archivos de imagen]
+│
+├── inicio/                   # Html, css y js para página de inicio
+│   ├── index.html
+│   ├── script.js
+│   └── styles.css
+│
+├── nosotros/                 # Html, css y js para pagina de nosotros
+│   ├── nosotros.html
+│   ├── nosotros.css
+│   └── nosotros.js
+│
+├── servicios/                 # Html, css y js para servicios y citas
+│   ├── servicios.html
+│   ├── servicios.css
+│   └── servicios.js
+│
+└── shared/                    # Html, css y js para componentes compartidos 
+    ├── footer.html
+    ├── footer.js
+    ├── navbar.html
+    └── navbar.js
 
 🌐 Acceso a la página: 
 
