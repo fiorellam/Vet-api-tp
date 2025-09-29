@@ -1,0 +1,97 @@
+:root {
+    --terracota: #D98E73;
+    --cafe-oscuro: #ac846c;
+    --arena: #F5E6CC;
+    --crema: #FFF9F5;
+    --verde: #A4B494;
+    --gris: #5C5C5C;
+    --blanco: #FFFFFF;
+}
+
+body { 
+    font-family: Arial, 
+    sans-serif; margin: 20px;
+    background: var(--crema);
+}
+.tabs { 
+    display: flex;
+    gap: 10px; 
+    margin-bottom: 20px; 
+}
+.tab { 
+    padding: 10px 15px; 
+    background: var(--arena); 
+    cursor: pointer; 
+    border-radius: 5px; 
+}
+.tab.active { 
+    background: var(--cafe-oscuro); 
+    color: white; 
+}
+.content { 
+    display: none; 
+}
+.content.active { 
+    display: block; 
+}
+form { 
+    margin-bottom: 20px; 
+    padding: 15px; border: 1px solid var(--cafe-oscuro); border-radius: 5px; 
+}
+input, select, button { 
+    margin: 5px 0; 
+    padding: 8px; 
+    width: 100%; 
+}
+table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+button.edit { background: orange; color: white; border: none; padding: 5px 10px; margin: 2px; cursor: pointer; }
+button.delete { background: red; color: white; border: none; padding: 5px 10px; margin: 2px; cursor: pointer; }
+/*
+body { 
+    font-family: Arial, sans-serif; 
+    background: var(--crema); 
+    padding: 20px; 
+}
+h1 { 
+    text-align: center; color: gris; 
+}
+.container { 
+    max-width: 900px; 
+    margin: auto; 
+    background: white; 
+    padding: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 2px 6px rgba(147, 111, 66, 0.4) 
+}
+label { 
+    font-weight: bold; 
+    display: block;
+    margin-top: 10px; 
+}
+select, input, textarea, button { 
+    width: 100%; 
+    padding: 8px; 
+    margin-top: 5px; 
+    border: 1px solid var(--cafe-oscuro); 
+    border-radius: 5px; 
+}
+button { 
+    background: var(--cafe-oscuro);
+    color: var(--crema); 
+    cursor: pointer; 
+}
+button:hover { 
+    background: var(--terracota); 
+}
+pre { 
+    background: var(--crema); 
+    color: var(--gris); 
+    padding: 10px; 
+    border-radius: 5px; 
+    overflow-x: auto; 
+}
+.grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; gap: 15px; 
+} */

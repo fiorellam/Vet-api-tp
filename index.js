@@ -19,6 +19,9 @@ connectDatabase();
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, './public/inicio/index.html'));
 });
+app.get("/admin", (req, res) => {
+    res.sendFile(path.join(__dirname, './public/admin/admin.html'));
+});
 
 const loginLimiter = rateLimit({
   windowMs: 10 * 60 * 1000, 
