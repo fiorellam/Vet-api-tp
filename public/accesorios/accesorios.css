@@ -1,0 +1,80 @@
+:root {
+    --terracota: #D98E73;
+    --cafe-oscuro: #ac846c;
+    --arena: #F5E6CC;
+    --crema: #FFF9F5;
+    --verde: #A4B494;
+    --gris: #5C5C5C;
+    --blanco: #FFFFFF;
+}
+body{
+    text-align: center;
+}
+
+.accesories-page {
+  padding: 60px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.description {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #6e4c3c;
+}
+
+.accesories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.accesory-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 15px;
+  transition: transform 0.3s ease;
+  position: relative;
+  text-align: center;
+}
+
+.accesory-card:hover {
+  transform: translateY(-5px);
+}
+
+.accesory-card img {
+  max-width: 80%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.accesory-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.price {
+  font-weight: bold;
+  color: #1a2a4f;
+}
+
+.badge {
+  background: #ff0055;
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 3px 7px;
+  border-radius: 5px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
