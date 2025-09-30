@@ -8,7 +8,7 @@
 ## 2. Diseña la Base de Datos
 -[✅]Importante: Si vas a hacer un front (opcional) te recomiendo usar como base de datos MongoDB para que cuando hagas el deploy, uses la versión en la nube (Esto queda a tu elección) Si no haras deploy, puedes usar MySQL con su ORM.
 ## Crea los Endpoints
--[✅]• Configura Express para crear un servidor básico.
+-[✅]• Configura Express para crear un servidor bánpmsico.
 -[✅]• Define las rutas para cada entidad (usuarios, productos, reservas, etc.).
 • Implementa los siguientes endpoints para cada entidad:
     -[✅] GET para obtener todos los registros.
@@ -27,15 +27,15 @@
 - [✅]Prueba casos extremos (por ejemplo: enviar datos incorrectos, intentar eliminar un registro que no existe, etc.).
 ## 7. Crea un Frontend Básico (OPCIONAL)
 - [✅] Desarrolla una vista básica en HTML y CSS para interactuar con tu API.
-- [❌] Puede ser un formulario para crear registros, una lista para mostrar datos, o cualquier otra interfaz simple.
-- [❌] Usa fetch o axios para hacer solicitudes a tu API desde el frontend
+- [✅] Puede ser un formulario para crear registros, una lista para mostrar datos, o cualquier otra interfaz simple.
+- [✅] Usa fetch o axios para hacer solicitudes a tu API desde el frontend
 ## 8. Documenta tu Proyecto
-- [❌] Crea un archivo README.md con la siguiente información:
-- [❌] Descripción del proyecto.
-- [❌] Instrucciones para instalar y ejecutar el proyecto.
-- [❌] Explicación de los endpoints disponibles.
+- [✅] Crea un archivo README.md con la siguiente información:
+- [✅] Descripción del proyecto.
+- [✅] Instrucciones para instalar y ejecutar el proyecto.
+- [✅] Explicación de los endpoints disponibles.
 - [❌] Capturas de pantalla o ejemplos de uso. (Opcional)
-- [❌] Exporta la colección de Postman y agrega un enlace o archivo en la documentación.
+- [✅] Exporta la colección de Postman y agrega un enlace o archivo en la documentación.
 ## 9. Despliega tu Proyecto en Render (Si hicieron un Front End)
 IMPORTANTE: Si van a desplegar, pueden optar por usar mongoDB como base de datos y hacer la integración sencilla como vimos clases pasadas.
 - [❌] Despliega tu API en Render:

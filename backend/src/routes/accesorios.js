@@ -26,7 +26,7 @@ router.get("/:id", async(req, res) => {
         if(!accesorio){
             return res.status(404).json({mensaje: 'Accesorio con ese id no fue encontrado'});
         }
-        res.json({mensaje: "Accesorio encontrado", accesorio});
+        res.json(accesorio);
     } catch(error){
         res.status(400).json({mensaje: "Error al encontrar el accesorio", error});
     }

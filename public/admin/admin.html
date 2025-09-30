@@ -14,6 +14,7 @@
         <div class="tabs">
             <div class="tab active" data-tab="mascotas">🐶 Mascotas</div>
             <div class="tab" data-tab="duenos">👤 Dueños</div>
+            <div class="tab" data-tab="accesorios">🛒 Accesorios</div>
             <div class="tab" data-tab="servicios">💆 Servicios</div>
             <div class="tab" data-tab="citas">📅 Citas</div>
         </div>
@@ -22,7 +23,7 @@
         <div class="content active" id="mascotas">
             <h2>Gestionar Mascotas</h2>
             <form id="formMascota">
-                <input  id="idMascota">
+                <input  id="idMascota" disabled>
                 <input type="text" id="nombreMascota" placeholder="Nombre de la mascota" required>
                 <input type="text" id="tipoMascota" placeholder="Tipo Mascota Ej. Perro, Gato, Ave, etc" required>
                 <input type="text" id="razaMascota" placeholder="Raza Mascota" required>
@@ -39,16 +40,37 @@
         <div class="content" id="duenos">
             <h2>Gestionar Dueños</h2>
             <form id="formDueno">
-            <input type="hidden" id="idDueno">
+            <input type="hidden" id="idDueno" disabled>
             <input type="text" id="nombreDueno" placeholder="Nombre del dueño" required>
-            <input type="email" id="emailDueno" placeholder="Email del dueño" required>
+            <input type="text" id="telefonoDueno" placeholder="Teléfono del dueño" required>
+            <input type="text" id="direccionDueno" placeholder="Dirección del dueño" required>
             <button type="submit">💾 Guardar Dueño</button>
         </form>
             <table id="tablaClientes"></table>
         </div>
 
+        <!-- Accesorios -->
+        <div class="content" id="accesorios">
+            <h2>Gestionar Accesorios</h2>
+            <form id="formAccesorio">
+            <input id="idAccesorio" disabled>
+            <input type="text" id="nombreAccesorio" placeholder="Nombre del accesorio" required>
+            <input type="text" id="descripcionAccesorio" placeholder="Descripción del accesorio" required>
+            <input type="number" id="precioAccesorio" placeholder="Precio" required>
+            <input type="text" id="imagenAccesorio" placeholder="Inserta un link de una imagen" required>
+            <select name="" id="selectAccesorio">
+                <option value="Perro">Perro</option>
+                <option value="Gato">Gato</option>
+                <option value="Pajaro">Pajaro</option>
+                <option value="Hamster">Hamster</option>
+            </select>
+            <button type="submit">💾 Guardar Accesorios</button>
+            </form>
+            <table id="tablaAccesorios"></table>
+        </div>
+
         <!-- Servicios -->
-        <div class="content" id="servicios">
+        <!-- <div class="content" id="servicios">
             <h2>Gestionar Servicios</h2>
             <form id="formServicio">
             <input type="hidden" id="idServicio">
@@ -57,10 +79,10 @@
             <button type="submit">💾 Guardar Servicio</button>
             </form>
             <table id="tablaServicios"></table>
-        </div>
+        </div> -->
 
         <!-- Citas -->
-        <div class="content" id="citas">
+        <!-- <div class="content" id="citas">
             <h2>Gestionar Citas</h2>
             <form id="formCita">
             <input type="hidden" id="idCita">
@@ -71,7 +93,43 @@
             <button type="submit">💾 Guardar Cita</button>
             </form>
             <table id="tablaCitas"></table>
+        </div> -->
+        <!-- Servicios -->
+        <div class="content" id="servicios">
+            <h2>Gestionar Servicios</h2>
+            <form id="formServicio">
+                <input type="hidden" id="idServicio">
+                <input type="text" id="nombreServicio" placeholder="Nombre del servicio" required>
+                <input type="text" id="descripcionServicio" placeholder="Descripción del servicio" required>
+                
+                <select id="tipoServicio" required>
+                    <option value="">-- Selecciona tipo de servicio --</option>
+                    <option value="Accesorios">Accesorios</option>
+                    <option value="Consulta">Consulta</option>
+                    <option value="Vacunación">Vacunación</option>
+                    <option value="Cirugía">Cirugía</option>
+                    <option value="Estética">Estética</option>
+                    <option value="Urgencia">Urgencia</option>
+                    <option value="Desparasitación">Desparasitación</option>
+                </select>
+
+                <input type="number" id="precioServicio" placeholder="Precio" required>
+
+                <select id="duenoServicio" required>
+                    <option value="">-- Selecciona el dueño --</option>
+                </select>
+
+                <select id="mascotaServicio" required>
+                    <option value="">-- Selecciona la mascota --</option>
+                </select>
+
+                <input type="datetime-local" id="fechaServicio" required>
+
+                <button type="submit">💾 Guardar Servicio</button>
+            </form>
+            <table id="tablaServicios"></table>
         </div>
+
     </div>
     <script src="/admin/admin.js"></script>
 </body>

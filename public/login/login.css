@@ -1,0 +1,79 @@
+:root {
+    --terracota: #D98E73;
+    --cafe-no-oscuro: #c7b0a2;
+    --cafe-oscuro: #ac846c;
+    --arena: #F5E6CC;
+    --crema: #FFF9F5;
+    --verde: #A4B494;
+    --gris: #5C5C5C;
+    --no-blanco: #FFF8F0;
+    --blanco: #FFFFFF;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+.auth-main{
+    background-image: url("../images/huellitas.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  background-color: var(--no-blanco);
+  color: var(--cafe-oscuro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* asegura altura completa de la ventana */
+}
+
+.auth {
+  width: 100%;
+  max-width: 700px;
+  font-size: 1em;
+  color: var(--crema);
+  background-color: var(--blanco);
+  text-align: center;
+  padding: 60px 20px;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content:space-evenly;
+}
+
+.login, .register{
+  display: flex;
+  flex-direction: column;
+}
+
+.auth h2{
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* opcional: separa visualmente los campos */
+}
+input {
+  border-radius: 10px;
+  border: none;
+  padding: 10px 15px;
+  font-weight: bold;
+  margin: 3px;
+  background-color: var(--crema);
+}
+h2{
+  color: #4B3832;
+}
+button{
+  margin: 3px;
+  padding: 5px 10px 5px;
+  background-color: var(--cafe-oscuro);
+  color: var(--crema);
+  border-radius: 10px;
+  margin: 0px 2px;
+  width: 100%;
+}
