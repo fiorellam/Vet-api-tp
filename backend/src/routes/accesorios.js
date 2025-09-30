@@ -4,7 +4,9 @@ const Accesorio = require("../models/Accesorios");
 
 const router = express.Router();
 
-router.post("/", async(req, res) => {
+const verificarToken = require("../middlewares/verificarToken"); 
+
+router.post("/", verificarToken, async(req, res) => {
     try{
         const nuevoAccesorio = new Accesorio(req.body);
         await nuevoAccesorio.save();
@@ -32,7 +34,7 @@ router.get("/:id", async(req, res) => {
     }
 })
 
-router.put("/:id", async(req, res) => {
+router.put("/:id", verificarToken, async(req, res) => {
     try{
         const id = req.params.id;
         const accesorio = await Accesorio.findByIdAndUpdate(id, req.body, {new: true});
@@ -45,7 +47,7 @@ router.put("/:id", async(req, res) => {
     }
 })
 
-router.delete("/:id", async(req, res) => {
+router.delete("/:id", verificarToken, async(req, res) => {
     try{
         const id = req.params.id;
         const accesorioAEliminar = await Accesorio.findByIdAndDelete(id);

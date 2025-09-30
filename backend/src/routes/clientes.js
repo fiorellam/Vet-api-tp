@@ -4,7 +4,9 @@ const Cliente = require("../models/Clientes");
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+const verificarToken = require("../middlewares/verificarToken"); 
+
+router.post("/", verificarToken, async (req, res) => {
     try {
         const nuevoCliente = new Cliente(req.body);
         await nuevoCliente.save();
@@ -38,7 +40,7 @@ router.get("/:id", async (req, res)=>{
 });
 
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', verificarToken, async (req, res) => {
     try {
         const cliente = await Cliente.findByIdAndUpdate(
             req.params.id,
@@ -57,7 +59,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', verificarToken, async (req, res) => {
     try {
         const resultado = await Cliente.findByIdAndDelete(req.params.id);
         res.json({
