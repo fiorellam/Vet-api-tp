@@ -22,6 +22,22 @@
                     </select>
                     <p class="service-description"></p>
                 </div>
+                <!-- Dueño -->
+                <div class="form-group">
+                    <label for="owner">Selecciona el dueño</label>
+                    <select id="owner" required>
+                        <option value="">--Selecciona un dueño--</option>
+                    </select>
+                </div>
+
+                <!-- Mascota -->
+                <div class="form-group">
+                    <label for="pet">Selecciona la mascota</label>
+                    <select id="pet" required>
+                        <option value="">--Selecciona una mascota--</option>
+                    </select>
+                </div>
+
                 <div class="form-group">
                     <label for="date">Selecciona una fecha</label>
                     <input type="date" id="date" name="date" required>
@@ -43,10 +59,6 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="email">Escribe tu correo</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
                 <p class="note"> Los horarios son del Centro de México</p>
                 <button type="submit" class="submit-btn">Agendar</button>
             </form>

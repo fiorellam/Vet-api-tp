@@ -68,12 +68,13 @@ input {
 h2{
   color: #4B3832;
 }
-button{
-  margin: 3px;
-  padding: 5px 10px 5px;
-  background-color: var(--cafe-oscuro);
-  color: var(--crema);
-  border-radius: 10px;
-  margin: 0px 2px;
-  width: 100%;
+button {
+    margin: 3px;
+    padding: 5px 10px 5px;
+    background-color: var(--cafe-oscuro);
+    color: var(--crema);
+    border-radius: 10px;
+    margin: 0px 2px;
+    width: 100%;
+    border: 1px solid var(--cafe-oscuro);
 }

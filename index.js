@@ -16,8 +16,12 @@ app.use(express.static(path.join(__dirname, './public')))
 const PORT = process.env.PORT || 3000;
 
 connectDatabase();
+
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, './public/inicio/index.html'));
+});
+app.get("/login", (req, res) => {
+    res.sendFile(path.join(__dirname, './public/login/login.html'));
 });
 app.get("/admin", (req, res) => {
     res.sendFile(path.join(__dirname, './public/admin/admin.html'));

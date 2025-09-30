@@ -16,7 +16,6 @@
             <div class="tab" data-tab="duenos">👤 Dueños</div>
             <div class="tab" data-tab="accesorios">🛒 Accesorios</div>
             <div class="tab" data-tab="servicios">💆 Servicios</div>
-            <div class="tab" data-tab="citas">📅 Citas</div>
         </div>
 
         <!-- Mascotas -->
@@ -57,6 +56,15 @@
             <input type="text" id="nombreAccesorio" placeholder="Nombre del accesorio" required>
             <input type="text" id="descripcionAccesorio" placeholder="Descripción del accesorio" required>
             <input type="number" id="precioAccesorio" placeholder="Precio" required>
+            <option 
+                value="SERVICIO_ID"
+                data-tipo="Consulta"
+                data-nombre="Consulta general"
+                data-descripcion="..."
+                data-precio="350"
+            >
+                Consulta general
+            </option>
             <input type="text" id="imagenAccesorio" placeholder="Inserta un link de una imagen" required>
             <select name="" id="selectAccesorio">
                 <option value="Perro">Perro</option>
@@ -70,48 +78,23 @@
         </div>
 
         <!-- Servicios -->
-        <!-- <div class="content" id="servicios">
-            <h2>Gestionar Servicios</h2>
-            <form id="formServicio">
-            <input type="hidden" id="idServicio">
-            <input type="text" id="nombreServicio" placeholder="Nombre del servicio" required>
-            <input type="number" id="precioServicio" placeholder="Precio" required>
-            <button type="submit">💾 Guardar Servicio</button>
-            </form>
-            <table id="tablaServicios"></table>
-        </div> -->
-
-        <!-- Citas -->
-        <!-- <div class="content" id="citas">
-            <h2>Gestionar Citas</h2>
-            <form id="formCita">
-            <input type="hidden" id="idCita">
-            <select id="mascotaCita" required></select>
-            <select id="servicioCita" required></select>
-            <input type="date" id="fechaCita" required>
-            <input type="time" id="horaCita" required>
-            <button type="submit">💾 Guardar Cita</button>
-            </form>
-            <table id="tablaCitas"></table>
-        </div> -->
-        <!-- Servicios -->
         <div class="content" id="servicios">
             <h2>Gestionar Servicios</h2>
             <form id="formServicio">
                 <input type="hidden" id="idServicio">
-                <input type="text" id="nombreServicio" placeholder="Nombre del servicio" required>
-                <input type="text" id="descripcionServicio" placeholder="Descripción del servicio" required>
-                
                 <select id="tipoServicio" required>
                     <option value="">-- Selecciona tipo de servicio --</option>
-                    <option value="Accesorios">Accesorios</option>
+                    <!-- <option value="Accesorios">Accesorios</option>
                     <option value="Consulta">Consulta</option>
                     <option value="Vacunación">Vacunación</option>
                     <option value="Cirugía">Cirugía</option>
                     <option value="Estética">Estética</option>
                     <option value="Urgencia">Urgencia</option>
-                    <option value="Desparasitación">Desparasitación</option>
+                    <option value="Desparasitación">Desparasitación</option> -->
                 </select>
+                <input type="text" id="nombreServicio" placeholder="Nombre del servicio" required readonly>
+                <input type="text" id="descripcionServicio" placeholder="Descripción del servicio" required readonly>
+                
 
                 <input type="number" id="precioServicio" placeholder="Precio" required>
 

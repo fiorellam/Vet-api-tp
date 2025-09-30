@@ -15,33 +15,6 @@ async function fetchJSON(url, options = {}) {
     return await res.json();
 }
 
-// function renderTable(data, tablaId, entidad) {
-//     console.log('Data', data);
-//     console.log("TablaID", tablaId);
-//     console.log("Entidad", entidad);
-//     const tabla = document.getElementById(tablaId);
-//     if (data.length === 0) {
-//         tabla.innerHTML = "<tr><td colspan='5'>Sin registros</td></tr>";
-//         return;
-//     }
-//     const headers = Object.keys(data[0]);
-//     tabla.innerHTML = `
-//         <thead>
-//         <tr>${headers.map(h => `<th>${h}</th>`).join('')}<th>Acciones</th></tr>
-//         </thead>
-//         <tbody>
-//         ${data.map(item => `
-//             <tr>
-//             ${headers.map(h => `<td>${item[h]}</td>`).join('')}
-//             <td>
-//                 <button class="edit" onclick="editar('${entidad}', ${item.id})">✏️</button>
-//                 <button class="delete" onclick="eliminar('${entidad}', '${item._id}')">🗑️</button>
-//             </td>
-//             </tr>
-//         `).join('')}
-//         </tbody>`;
-// }
-
 function renderTable(data, tablaId, entidad) {
     const tabla = document.getElementById(tablaId);
 
@@ -67,8 +40,12 @@ function renderTable(data, tablaId, entidad) {
                         ${headers.map(header => {
                             let valor = item[header];
                             // Mostrar nombre del dueño si es un objeto
-                            if (header === "duenioMascota" && valor && typeof valor === "object") {
+                            if (header === "duenioMascota" || header === "duenio" || header === "mascota" && valor && typeof valor === "object") {
                                 valor = valor.nombre || "[Sin nombre]";
+                            }
+                            // Mostrar imagen si el campo es 'img' y el valor parece una URL
+                            if (header === "img" && typeof valor === "string" && valor.startsWith("http")) {
+                                valor = `<img src="${valor}" alt="imagen" style="max-width: 100px; max-height: 100px;" />`;
                             }
                             return `<td>${valor}</td>`;
                         }).join('')}
@@ -89,9 +66,13 @@ async function cargar(entidad) {
     const data = await fetchJSON(`/api/${entidad}`);
     renderTable(data, `tabla${capitalize(entidad)}`, entidad);
     if (entidad === "clientes") cargarSelectDuenos(data);
-    if (entidad === "mascotas") cargarSelectMascotas(data);
-    // if (entidad === "accesorios") cargarSelectAccesorios(data);
-    if (entidad === "servicios") cargarSelectServicios(data);
+    if (entidad === "servicios") {
+        cargarSelectServicios(data);
+        const duenos = await fetchJSON(`/api/clientes`);
+        cargarSelectDuenosParaServicios(duenos);
+        const mascotas = await fetchJSON(`/api/mascotas`);
+        cargarSelectMascotasParaServicios(mascotas);
+    };
 }
 
 async function guardar(entidad, datos, id = null) {
@@ -125,11 +106,46 @@ async function editar(entidad, id) {
         document.getElementById("telefonoDueno").value = item.telefono;
         document.getElementById("direccionDueno").value = item.direccion;
     }
-    // if (entidad === "servicios") {
-    //     document.getElementById("idServicio").value = item.id;
-    //     document.getElementById("nombreServicio").value = item.nombre;
-    //     document.getElementById("precioServicio").value = item.precio;
-    // }
+    if (entidad === "servicios") {
+        // Espera que se hayan cargado clientes, mascotas y servicios en los selects
+        const [clientes, mascotas, servicios] = await Promise.all([
+            fetchJSON('/api/clientes'),
+            fetchJSON('/api/mascotas'),
+            fetchJSON('/api/servicios')
+        ]);
+
+        cargarSelectDuenosParaServicios(clientes);
+        cargarSelectMascotasParaServicios(mascotas);
+        cargarSelectServicios(servicios);
+
+        // ⚠️ Espera a que los selects se hayan actualizado en el DOM (esperar un "tick")
+        setTimeout(() => {
+            document.getElementById("idServicio").value = item._id;
+
+            // Selecciona la opción del servicio por tipo
+            const tipoSelect = document.getElementById("tipoServicio");
+            const option = Array.from(tipoSelect.options).find(opt => opt.dataset.tipo === item.tipo);
+            if (option) {
+                tipoSelect.value = option.value;
+                document.getElementById("nombreServicio").value = option.dataset.nombre || '';
+                document.getElementById("descripcionServicio").value = option.dataset.descripcion || '';
+                document.getElementById("precioServicio").value = option.dataset.precio || '';
+            }
+
+            // ✅ Asignar dueño y mascota
+            document.getElementById("duenoServicio").value = item.duenio?._id || item.duenio || '';
+            document.getElementById("mascotaServicio").value = item.mascota?._id || item.mascota || '';
+
+            // ✅ Fecha programada
+            if (item.fechaProgramada) {
+                const fecha = new Date(item.fechaProgramada);
+                const offset = fecha.getTimezoneOffset();
+                const localDate = new Date(fecha.getTime() - offset * 60000);
+                document.getElementById("fechaServicio").value = localDate.toISOString().slice(0, 16);
+            }
+
+        }, 100); // Delay para asegurar que los <select> ya están listos
+    }
     if (entidad === "accesorios"){
         document.getElementById("idAccesorio").value = item._id;
         document.getElementById("nombreAccesorio").value = item.nombre;
@@ -138,13 +154,6 @@ async function editar(entidad, id) {
         document.getElementById("imagenAccesorio").value = item.img;
         document.getElementById("selectAccesorio").value = item.categoria;
 
-    }
-    if (entidad === "citas") {
-        document.getElementById("idCita").value = item.id;
-        document.getElementById("mascotaCita").value = item.mascotaId;
-        document.getElementById("servicioCita").value = item.servicioId;
-        document.getElementById("fechaCita").value = item.fecha;
-        document.getElementById("horaCita").value = item.hora;
     }
 }
 
@@ -172,14 +181,21 @@ function cargarSelectDuenos(clientes) {
     });
 }
 
-function cargarSelectMascotas(mascotas) {
-    const select = document.getElementById("mascotaCita");
-    select.innerHTML = mascotas.map(m => `<option value="${m.id}">${m.nombre}</option>`).join('');
-}
-
 function cargarSelectServicios(servicios) {
-    const select = document.getElementById("servicioCita");
-    select.innerHTML = servicios.map(s => `<option value="${s.id}">${s.nombre}</option>`);
+    const select = document.getElementById("tipoServicio");
+    select.innerHTML = `<option value="">-- Selecciona el servicio --</option>`;
+    select.innerHTML += servicios.map(s => 
+        `<option value="${s._id}" 
+            data-id="${s._id}"
+            data-nombre="${s.nombre}"
+            data-descripcion="${s.descripcion}"
+            data-precio="${s.precio}"
+            data-tipo="${s.tipo}"
+        >
+            ${s.nombre}
+        </option>`
+    ).join('');
+
 }
 function cargarSelectDuenosParaServicios(clientes) {
     const select = document.getElementById("duenoServicio");
@@ -202,6 +218,15 @@ function cargarSelectMascotasParaServicios(mascotas) {
         select.appendChild(option);
     });
 }
+document.getElementById("tipoServicio").addEventListener("change", function () {
+    const selected = this.options[this.selectedIndex];
+    console.log("Selected",selected);
+    console.log("Dataset", selected.dataset);
+    // Llenar los inputs
+    document.getElementById("nombreServicio").value = selected.dataset.nombre || '';
+    document.getElementById("descripcionServicio").value = selected.dataset.descripcion || '';
+    document.getElementById("precioServicio").value = selected.dataset.precio || '';
+});
 
 
 // ------------------ Formularios ------------------
@@ -247,27 +272,31 @@ document.getElementById("formAccesorio").addEventListener("submit", async e => {
     e.target.reset();
 });
 
-// document.getElementById("formServicio").addEventListener("submit", async e => {
-//     e.preventDefault();
-//     const datos = {
-//         nombre: document.getElementById("nombreServicio").value,
-//         precio: document.getElementById("precioServicio").value
-//     };
-//     const id = document.getElementById("idServicio").value || null;
-//     await guardar("servicios", datos, id);
-//     e.target.reset();
-// });
-
 document.getElementById("formServicio").addEventListener("submit", async e => {
     e.preventDefault();
+
+    const tipoSelect = document.getElementById("tipoServicio");
+    const selectedOption = tipoSelect.options[tipoSelect.selectedIndex];
+    // Fecha local del input
+    const fechaLocal = document.getElementById("fechaServicio").value;
+    const fecha = new Date(fechaLocal);
+
+    // Convertir a fecha UTC compensando la zona horaria
+    const fechaUTC = new Date(fecha.getTime() - fecha.getTimezoneOffset() * 60000).toISOString();
+
+    
+    
     const datos = {
+        tipo: selectedOption.dataset.tipo,
         nombre: document.getElementById("nombreServicio").value,
         descripcion: document.getElementById("descripcionServicio").value,
-        mascotaId: document.getElementById("mascotaCita").value,
-        fecha: document.getElementById("fechaCita").value,
-        hora: document.getElementById("horaCita").value
+        precio: document.getElementById("precioServicio").value,
+        duenio: document.getElementById("duenoServicio").value,
+        mascota: document.getElementById("mascotaServicio").value,
+        fechaProgramada: fechaUTC
     };
-    const id = document.getElementById("idCita").value || null;
+
+    const id = document.getElementById("idServicio").value || null;
     await guardar("servicios", datos, id);
     e.target.reset();
 });
