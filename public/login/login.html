@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
-    <link rel="stylesheet" href="login.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/login/login.css">
+    <link rel="stylesheet" href="/inicio/styles.css">
 </head>
 <body>
     <main class="auth-main">
         <section class="auth">
             <section class="login">
                 <h2>Iniciar Sesión</h2>
-                <form action="/api/users/login" method="POST" id="loginForm">
-                    <input type="email" name="email" placeholder="Correo electrónico" required>
+                <form action="/api/login" method="POST" id="loginForm">
+                    <input type="email" name="correo" placeholder="Correo electrónico" required>
                     <input type="password" name="password" placeholder="Contraseña" required>
                     <button type="submit" class="button-pink">Entrar</button>
                 </form>
             </section>
             <section class="register">
                 <h2>Registrarse</h2>
-                <form action="/api/users/register" method="POST" id="registerForm">
-                    <input type="text" name="name" placeholder="Nombre completo" required>
-                    <input type="email" name="email" placeholder="Correo electrónico" required>
+                <form action="/api/usuarios" method="POST" id="registerForm">
+                    <input type="text" name="nombre" placeholder="Nombre completo" required>
+                    <input type="email" name="correo" placeholder="Correo electrónico" required>
+                    <input type="text" name="rol" placeholder="Rol ej: admin" required>
                     <input type="password" name="password" placeholder="Contraseña" required>
                     <button type="submit" class="button-pink">Crear cuenta</button>
                 </form>

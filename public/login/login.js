@@ -1,15 +1,17 @@
 document.getElementById('registerForm').addEventListener('submit', async (e) => {
   e.preventDefault(); 
-
+  
   const form = e.target;
+  console.log(form);
   const data = {
-    name: form.name.value,
-    email: form.email.value,
+    nombre: form.nombre.value,
+    correo: form.correo.value,
+    rol: form.rol.value,
     password: form.password.value
   };
 
   try {
-    const res = await fetch('/api/users/register', {
+    const res = await fetch('/api/usuarios', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -36,12 +38,12 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
   const form = e.target;
   const data = {
-    email: form.email.value,
+    correo: form.correo.value,
     password: form.password.value
   };
 
   try {
-    const res = await fetch('/api/users/login', {
+    const res = await fetch('/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -56,10 +58,11 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
       alert('Inicio de sesión exitoso ✔️');
       const token = localStorage.getItem('token');
       const payload = JSON.parse(atob(token.split('.')[1]));
-       if (payload.email === 'admin@gmail.com') {
+       if (payload.rol === 'admin') {
  
         fetch('/admin', {
         headers: { Authorization: `Bearer ${token}` }
+        
       })
       .then(r => {
         if (!r.ok) throw new Error('No autorizado');

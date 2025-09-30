@@ -6,7 +6,7 @@ const router = express.Router();
 
 const verificarToken = require("../middlewares/verificarToken"); 
 
-router.post("/", verificarToken, async (req, res) => {
+router.post("/",  async (req, res) => {
     try {
         const nuevoServicio = new Servicio(req.body);
         await nuevoServicio.save();
