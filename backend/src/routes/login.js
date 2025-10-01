@@ -2,13 +2,13 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const Usuario = require('../../../backend/src/models/Usuarios') // ajusta la ruta según tu estructura
+const Usuario = require('../../../backend/src/models/Usuarios') 
 
 router.post('/', async (req, res) => {
     try {
         const { correo, password } = req.body
 
-        // Validación básica
+        
         if (!correo || !password) {
         return res.status(400).json({ mensaje: 'Correo y contraseña son obligatorios.' })
         }

@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require('cors');
-// const cookieParser = require('cookie-parser');
+
 const connectDatabase = require("./backend/src/database");
 const verificarToken = require('./backend/src/middlewares/verificarToken')
 const path = require('path');
@@ -40,11 +40,7 @@ app.use('/api/servicios', require('./backend/src/routes/servicios'))
 app.use('/api/mascotas', require('./backend/src/routes/mascotas'))
 app.use('/api/usuarios', require('./backend/src/routes/usuarios')); 
 app.use("/api/accesorios", require("./backend/src/routes/accesorios"));
-// app.use('/api/clientes', verificarToken, require('./backend/src/routes/clientes'))
-// app.use('/api/servicios', verificarToken, require('./backend/src/routes/servicios'))
-// app.use('/api/mascotas', verificarToken, require('./backend/src/routes/mascotas'))
-// app.use('/api/usuarios', verificarToken, require('./backend/src/routes/usuarios')); 
-// app.use("/api/accesorios", verificarToken, require("./backend/src/routes/accesorios"));
+
 
 
 

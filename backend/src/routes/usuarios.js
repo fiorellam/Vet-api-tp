@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
     try {
         const { nombre, correo, password, rol } = req.body
 
-        // Validación básica
+       
         if (
         typeof nombre !== 'string' || nombre.trim() === '' ||
         typeof correo !== 'string' || correo.trim() === '' ||
@@ -19,17 +19,16 @@ router.post('/', async (req, res) => {
         return res.status(400).json({ mensaje: 'Faltan campos obligatorios o son inválidos.' })
         }
 
-        // Verificar si el correo ya existe
+       
         const usuarioExistente = await Usuario.findOne({ correo })
         if (usuarioExistente) {
         return res.status(409).json({ mensaje: 'El correo ya está registrado.' })
         }
 
-        // Hashear la contraseña
+        
         const salt = await bcrypt.genSalt(10)
         const passwordHasheado = await bcrypt.hash(password, salt)
 
-        // Crear y guardar el usuario
         const nuevoUsuario = new Usuario({
         nombre,
         correo,
@@ -39,7 +38,7 @@ router.post('/', async (req, res) => {
 
         await nuevoUsuario.save()
 
-        // Generar token JWT
+       
         const token = jwt.sign(
         { id: nuevoUsuario._id, correo: nuevoUsuario.correo, rol: nuevoUsuario.rol },
         process.env.JWT_SECRET || 'clave_super_segura',

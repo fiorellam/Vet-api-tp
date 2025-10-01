@@ -34,11 +34,11 @@
 - [✅] Descripción del proyecto.
 - [✅] Instrucciones para instalar y ejecutar el proyecto.
 - [✅] Explicación de los endpoints disponibles.
-- [❌] Capturas de pantalla o ejemplos de uso. (Opcional)
+- [✅] Capturas de pantalla o ejemplos de uso. (Opcional)
 - [✅] Exporta la colección de Postman y agrega un enlace o archivo en la documentación.
 ## 9. Despliega tu Proyecto en Render (Si hicieron un Front End)
 IMPORTANTE: Si van a desplegar, pueden optar por usar mongoDB como base de datos y hacer la integración sencilla como vimos clases pasadas.
-- [❌] Despliega tu API en Render:
+- [✅] Despliega tu API en Render:
 o Crea una cuenta en Render (https://render.com).
 o Sigue los pasos para desplegar un servicio web.
 o Conecta tu repositorio de GitHub a Render.
@@ -50,13 +50,13 @@ o Asegúrate de que la base de datos también esté disponible en la nube
 - [✅] Crea un repositorio en GitHub.
 - [✅] Sube todos los archivos de tu proyecto al repositorio.
 - [✅] Asegúrate de que el repositorio sea público para que puedas compartirlo.
-- [❌] Envía el enlace del repositorio a Discord:
-- [❌] Copia el enlace de tu repositorio de GitHub.
-- [❌] Envía el enlace al canal de Discord designado por tu profesora.
+- [✅] Envía el enlace del repositorio a Discord:
+- [✅] Copia el enlace de tu repositorio de GitHub.
+- [✅] Envía el enlace al canal de Discord designado por tu profesora.
 ## Criterios de Evaluación:
-    - [❌]1. Funcionalidad: La API debe funcionar correctamente y cumplir con todos los requisitos.
-    - [❌]2. Código Limpio: El código debe estar bien organizado, con buenas prácticas y comentarios claros.
-    - [❌]3. Seguridad: Las contraseñas deben estar protegidas y los endpoints deben ser seguros.
-    - [❌]4. Documentación:El proyecto debe estar bien documentado, con instrucciones claras para su uso.
-    - [❌]5. Creatividad: El proyecto debe demostrar originalidad y un enfoque único.
-    - [❌]6. Despliegue: (Opcional) La API debe estar desplegada en Render y ser accesible desde la URL proporcionada. 
+    - [✅]1. Funcionalidad: La API debe funcionar correctamente y cumplir con todos los requisitos.
+    - [✅]2. Código Limpio: El código debe estar bien organizado, con buenas prácticas y comentarios claros.
+    - [✅]3. Seguridad: Las contraseñas deben estar protegidas y los endpoints deben ser seguros.
+    - [✅]4. Documentación:El proyecto debe estar bien documentado, con instrucciones claras para su uso.
+    - [✅]5. Creatividad: El proyecto debe demostrar originalidad y un enfoque único.
+    - [✅]6. Despliegue: (Opcional) La API debe estar desplegada en Render y ser accesible desde la URL proporcionada. 

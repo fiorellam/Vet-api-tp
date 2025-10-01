@@ -192,12 +192,18 @@ public/
 https://vet-api-tp-1.onrender.com/
 https://vet-api-tp-1.onrender.com/login
 
-Para poder acceder al admin se debe iniciar sesion primero o crear un usuario
-https://vet-api-tp-1.onrender.com/admin
+- Primero debe de registrarse un usuario con su nombre, mail y contraseña (mayor a 8 caracteres) y elegir el rol deseado (admin, cliente o veterinario)
+- Luego debemos pasar al login utilizando los datos ingresado en el registro 
+
+https://vet-api-tp-1.onrender.com/admin (Link directo al admin para pruebas)
 
 🧪 Testing Se pueden realizar pruebas con Postman para verificar los endpoints: 
 
 https://giselle-3602765.postman.co/workspace/Giselle's-Workspace~d4309fb1-b812-47c9-873f-171f544c5057/folder/45504740-975835de-c077-4170-9513-1de72e71b39f?action=share&source=copy-link&creator=45504740&ctx=documentation
+
+   Encontra nuestro repo en GitHub:  
+
+https://github.com/fiorellam/Vet-api-tp
 
 🤝 Colaboradores:
 
