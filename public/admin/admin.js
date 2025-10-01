@@ -10,7 +10,16 @@ document.querySelectorAll('.tab').forEach(tab => {
 
 // ------------------ Helpers ------------------
 async function fetchJSON(url, options = {}) {
-    const res = await fetch(url, options);
+    const token = localStorage.getItem('token');
+    if(!token) throw new Error("Token no existe");
+    const res = await fetch(url, {
+        ...options,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+            ...options.headers,
+        }
+    });
     if (!res.ok) throw new Error(`Error: ${res.status}`);
     return await res.json();
 }
@@ -75,11 +84,7 @@ async function cargar(entidad) {
     };
 }
 
-async function guardar(entidad, datos, id = null) {
-    console.log("Funcion de Guardar");
-    console.log("Entidad", entidad);
-    console.log("Datos", datos);
-    
+async function guardar(entidad, datos, id = null) {    
     const url = id ? `/api/${entidad}/${id}` : `/api/${entidad}`;
     const method = id ? "PUT" : "POST";
     await fetchJSON(url, {
