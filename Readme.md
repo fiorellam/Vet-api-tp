@@ -127,7 +127,7 @@ Agregar al archivo package.json en la seccion de "scripts"
 
 
 📁 Estructura del Backend: 
-
+```
 backend/src
 ├─ middlewares
 │  └─ verificarToken.js        # Middleware para validar tokens JWT y proteger rutas
@@ -147,9 +147,10 @@ backend/src
 ├─ database.js                # Configuración y conexión a MongoDB
 └─ index.js                   # Archivo principal que levanta el servidor
 └─ package.json               # Descrip. gral del proyecto, comandos y dependencias
-
+```
 📁 Estructura del Frontend: 
 public/
+```
 ├── accesorios/               # Html, css y js para accesorios
 │   ├── accesorios.html
 │   ├── accesorios.css
@@ -187,21 +188,28 @@ public/
     ├── footer.js
     ├── navbar.html
     └── navbar.js
-
+```
 🌐 Acceso a la página: 
 https://vet-api-tp-1.onrender.com/
+<img width="1891" height="696" alt="image" src="https://github.com/user-attachments/assets/8506e8c7-b5da-4f3f-a389-615218594a14" />
+
+
 https://vet-api-tp-1.onrender.com/login
+
+<img width="1919" height="982" alt="image" src="https://github.com/user-attachments/assets/92b21cf7-e160-4f3c-8066-de821ea8f7fe" />
 
 - Primero debe de registrarse un usuario con su nombre, mail y contraseña (mayor a 8 caracteres) y elegir el rol deseado (admin, cliente o veterinario)
 - Luego debemos pasar al login utilizando los datos ingresado en el registro 
 
 https://vet-api-tp-1.onrender.com/admin (Link directo al admin para pruebas)
+<img width="1500" height="952" alt="image" src="https://github.com/user-attachments/assets/a70a24f4-6eda-42eb-ac65-5c6d6893c0a8" />
+
 
 🧪 Testing Se pueden realizar pruebas con Postman para verificar los endpoints: 
 
 https://giselle-3602765.postman.co/workspace/Giselle's-Workspace~d4309fb1-b812-47c9-873f-171f544c5057/folder/45504740-975835de-c077-4170-9513-1de72e71b39f?action=share&source=copy-link&creator=45504740&ctx=documentation
 
-   Encontra nuestro repo en GitHub:  
+💻 Encontra nuestro repo en GitHub:  
 
 https://github.com/fiorellam/Vet-api-tp
 
