@@ -58,7 +58,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
       alert('Inicio de sesión exitoso ✔️');
       const token = localStorage.getItem('token');
       const payload = JSON.parse(atob(token.split('.')[1]));
-       if (payload.rol === 'admin') {
+       if (payload.rol === 'admin'|| payload.rol === 'veterinario' ||payload.rol === 'cliente') {
  
         fetch('/admin', {
         headers: { Authorization: `Bearer ${token}` }
