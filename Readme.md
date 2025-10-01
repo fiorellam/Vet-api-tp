@@ -189,8 +189,11 @@ public/
     └── navbar.js
 
 🌐 Acceso a la página: 
+https://vet-api-tp-1.onrender.com/
+https://vet-api-tp-1.onrender.com/login
 
-// espacio libre para la parte del render!!!!///
+Para poder acceder al admin se debe iniciar sesion primero o crear un usuario
+https://vet-api-tp-1.onrender.com/admin
 
 🧪 Testing Se pueden realizar pruebas con Postman para verificar los endpoints: 
 
